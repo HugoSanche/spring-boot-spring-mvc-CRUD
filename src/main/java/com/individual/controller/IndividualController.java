@@ -40,7 +40,7 @@ public class IndividualController {
     }
 
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("individual") Individual theIndividual){
+    public String saveIndividual(@ModelAttribute("individual") Individual theIndividual){
 
         //save the individual
         individualService.save(theIndividual);

@@ -1,9 +1,11 @@
 package com.individual.entity;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name="individuals")
@@ -24,8 +26,10 @@ public class Individual {
     String secondLastName;
     @Column(name="MaritalStatus")
     String maritalStatus;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="BirthDate")
-    Date birthDate;
+    OffsetDateTime birthDate;
 
     @Column(name="Nacionality")
     String nationality;
@@ -67,7 +71,7 @@ public class Individual {
 
 
 
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, Date birthDate, String nacionality,
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, String nacionality,
                       int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob,
                       String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender) {
         this.personId=personId;
@@ -123,7 +127,7 @@ public class Individual {
         return maritalStatus;
     }
 
-    public Date getBirthDate() {
+    public OffsetDateTime getBirthDate() {
         return birthDate;
     }
 
@@ -201,7 +205,8 @@ public class Individual {
         this.maritalStatus = maritalStatus;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(OffsetDateTime birthDate)  {
+
         this.birthDate = birthDate;
     }
 
