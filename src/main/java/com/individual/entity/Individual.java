@@ -11,7 +11,7 @@ public class Individual {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PersonId")
-    int personId;
+   public int personId;
 
     @Column(name="FirstName")
     String firstName;
@@ -28,7 +28,7 @@ public class Individual {
     Date birthDate;
 
     @Column(name="Nacionality")
-    String nacionality;
+    String nationality;
     @Column(name="NumberOfDependents")
     int numberOfDependents;
 
@@ -52,7 +52,7 @@ public class Individual {
     String currentPositionName;
 
     @Column(name="CurrentMonthlyIncome")
-    BigDecimal CurrentMonthlyIncome;
+    BigDecimal currentMonthlyIncome;
 
     @Column(name="DoesBizActivities")
     int doesBizActivities;
@@ -64,17 +64,20 @@ public class Individual {
     @Column(name="Gender")
     String gender;
 
-    public Individual( String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, Date birthDate, String nacionality,
+
+
+
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, Date birthDate, String nacionality,
                       int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob,
                       String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender) {
-
+        this.personId=personId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.maritalStatus = maritalStatus;
         this.birthDate = birthDate;
-        this.nacionality = nacionality;
+        this.nationality = nacionality;
         this.numberOfDependents = numberOfDependents;
         this.divorceLegalAgreement = divorceLegalAgreement;
         this.dwellingType = dwellingType;
@@ -82,7 +85,7 @@ public class Individual {
         this.occupation = occupation;
         this.startDateInCurrentJob = startDateInCurrentJob;
         this.currentPositionName = currentPositionName;
-        CurrentMonthlyIncome = currentMonthlyIncome;
+        this.currentMonthlyIncome = currentMonthlyIncome;
         this.doesBizActivities = doesBizActivities;
         this.hiringType = hiringType;
         this.externalEmployeeNumber = externalEmployeeNumber;
@@ -92,8 +95,12 @@ public class Individual {
     public Individual() {
     }
 
-    public int getPerson() {
+    public int getPersonId() {
         return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getFirstName() {
@@ -121,7 +128,7 @@ public class Individual {
     }
 
     public String getNacionality() {
-        return nacionality;
+        return nationality;
     }
 
     public int getNumberOfDependents() {
@@ -153,7 +160,7 @@ public class Individual {
     }
 
     public BigDecimal getCurrentMonthlyIncome() {
-        return CurrentMonthlyIncome;
+        return currentMonthlyIncome;
     }
 
     public int getDoesBizActivities() {
@@ -172,9 +179,7 @@ public class Individual {
         return gender;
     }
 
-    public void setPerson(int person) {
-        this.personId = person;
-    }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -201,7 +206,7 @@ public class Individual {
     }
 
     public void setNacionality(String nacionality) {
-        this.nacionality = nacionality;
+        this.nationality = nacionality;
     }
 
     public void setNumberOfDependents(int numberOfDependents) {
@@ -224,6 +229,12 @@ public class Individual {
         this.occupation = occupation;
     }
 
+//    public void setStartDateInCurrentJob(Date startDateInCurrentJob) throws ParseException {
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("dd/MM/yyyy");
+//
+//        this.startDateInCurrentJob = simpleDateFormat.parse(String.valueOf(startDateInCurrentJob));
+//    }
+
     public void setStartDateInCurrentJob(Date startDateInCurrentJob) {
         this.startDateInCurrentJob = startDateInCurrentJob;
     }
@@ -233,7 +244,7 @@ public class Individual {
     }
 
     public void setCurrentMonthlyIncome(BigDecimal currentMonthlyIncome) {
-        CurrentMonthlyIncome = currentMonthlyIncome;
+        currentMonthlyIncome = currentMonthlyIncome;
     }
 
     public void setDoesBizActivities(int doesBizActivities) {
@@ -262,7 +273,7 @@ public class Individual {
                 ", secondLastName='" + secondLastName + '\'' +
                 ", maritalStatus='" + maritalStatus + '\'' +
                 ", birthDate=" + birthDate +
-                ", nacionality='" + nacionality + '\'' +
+                ", nacionality='" + nationality + '\'' +
                 ", numberOfDependents=" + numberOfDependents +
                 ", divorceLegalAgreement='" + divorceLegalAgreement + '\'' +
                 ", dwellingType='" + dwellingType + '\'' +
@@ -270,7 +281,7 @@ public class Individual {
                 ", occupation='" + occupation + '\'' +
                 ", startDateInCurrentJob=" + startDateInCurrentJob +
                 ", currentPositionName='" + currentPositionName + '\'' +
-                ", CurrentMonthlyIncome=" + CurrentMonthlyIncome +
+                ", CurrentMonthlyIncome=" + currentMonthlyIncome +
                 ", doesBizActivities=" + doesBizActivities +
                 ", hiringType='" + hiringType + '\'' +
                 ", externalEmployeeNumber='" + externalEmployeeNumber + '\'' +

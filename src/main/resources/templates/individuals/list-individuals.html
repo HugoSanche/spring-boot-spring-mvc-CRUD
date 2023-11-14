@@ -13,6 +13,14 @@
 <div class ="container">
     <h3> Individual Directory</h3>
     <hr>
+
+    <!-- Add a button -->
+    <a th:href="@{/individuals/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Individual
+    </a>
+
+
     <table class="table table-bodered table-striped">
         <thead class ="table-dark">
             <tr>
@@ -21,16 +29,23 @@
                 <th>First Last Name</th>
                 <th>Second Last Name</th>
                 <th>Marital Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="tempIndividual : ${individual}">
+            <tr th:each="tempIndividual : ${individuals}">
                 <td th:text="${tempIndividual.firstName}"/>
                 <td th:text="${tempIndividual.middleName}"/>
                 <td th:text="${tempIndividual.firstLastName}"/>
                 <td th:text="${tempIndividual.secondLastName}"/>
                 <td th:text="${tempIndividual.maritalStatus}"/>
-
+                <!-- Add update button link-->
+                <td>
+                    <a th:href="@{/individuals/showFormForUpdate(individualId=${tempIndividual.personId})}"
+                        class="btn btn-info btn-sm">
+                        Update
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
