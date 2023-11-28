@@ -1,7 +1,6 @@
 package com.individual.entity;
 
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -27,9 +26,9 @@ public class Individual {
     @Column(name="MaritalStatus")
     String maritalStatus;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name="BirthDate")
-    OffsetDateTime birthDate;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @Column(name="BirthDate")
+//    OffsetDateTime birthDate;
 
     @Column(name="Nacionality")
     String nationality;
@@ -80,7 +79,7 @@ public class Individual {
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.maritalStatus = maritalStatus;
-        this.birthDate = birthDate;
+       // this.birthDate = birthDate;
         this.nationality = nacionality;
         this.numberOfDependents = numberOfDependents;
         this.divorceLegalAgreement = divorceLegalAgreement;
@@ -127,9 +126,13 @@ public class Individual {
         return maritalStatus;
     }
 
-    public OffsetDateTime getBirthDate() {
-        return birthDate;
-    }
+
+
+//    public OffsetDateTime getBirthDate() {
+//        System.out.println(birthDate);
+//        return birthDate;
+//    }
+
 
     public String getNacionality() {
         return nationality;
@@ -184,9 +187,9 @@ public class Individual {
     }
 
 
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        System.out.println("First Name : "+this.firstName);
     }
 
     public void setMiddleName(String middleName) {
@@ -205,10 +208,10 @@ public class Individual {
         this.maritalStatus = maritalStatus;
     }
 
-    public void setBirthDate(OffsetDateTime birthDate)  {
-
-        this.birthDate = birthDate;
-    }
+//    public void setBirthDate(OffsetDateTime birthDate)  {
+//        System.out.println(birthDate);
+//        this.birthDate = birthDate;
+//    }
 
     public void setNacionality(String nacionality) {
         this.nationality = nacionality;
@@ -277,7 +280,7 @@ public class Individual {
                 ", firstLastName='" + firstLastName + '\'' +
                 ", secondLastName='" + secondLastName + '\'' +
                 ", maritalStatus='" + maritalStatus + '\'' +
-                ", birthDate=" + birthDate +
+                //", birthDate=" + birthDate +
                 ", nacionality='" + nationality + '\'' +
                 ", numberOfDependents=" + numberOfDependents +
                 ", divorceLegalAgreement='" + divorceLegalAgreement + '\'' +

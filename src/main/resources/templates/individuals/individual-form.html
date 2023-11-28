@@ -27,11 +27,18 @@
                    class="form-control mb-4 w-25" placeholder="First Last Name">
             <input type="text" th:field="*{secondLastName}"
                    class="form-control mb-4 w-25" placeholder="Second Last Name">
-            <input type="text" th:field="*{maritalStatus}"
-                   class="form-control mb-4 w-25" placeholder="Marital Status">
 
-            <input type="text" th:field="*{birthDate}"
-                   class="form-control mb-4 w-25" placeholder="Birth Date">
+<!--            <input type="text" th:field="*{maritalStatus}"-->
+<!--                   class="form-control mb-4 w-25" placeholder="Marital Status">-->
+
+            <input type="radio" th:field="*{maritalStatus}"
+                   th:each="tempLang : ${languages}"
+                   th:value="${tempLang}"
+                   th:text="${tempLang}"/>
+
+
+<!--            <input type="text" th:field="*{birthDate}"-->
+<!--                   class="form-control mb-4 w-25" placeholder="Birth Date">-->
 
             <input type="text" th:field="*{nacionality}"
                    class="form-control mb-4 w-25" placeholder="Nationality">
@@ -52,8 +59,13 @@
             <input type="text" th:field="*{occupation}"
                    class="form-control mb-4 w-25" placeholder="Occupation">
 
+
+
+
+
 <!--            <input type="text" th:field="*{startDateInCurrentJob}"-->
 <!--                   class="form-control mb-4 w-25" placeholder="start Date In Current Job">-->
+
 
             <input type="text" th:field="*{currentPositionName}"
                    class="form-control mb-4 w-25" placeholder="current Position Name">
@@ -72,6 +84,13 @@
 
             <input type="text" th:field="*{gender}"
                    class="form-control mb-4 w-25" placeholder="Gender">
+
+
+<!--            Favorite Operating Systems:-->
+
+<!--                <input type="checkbox" th:field="*{gender}" th:value="Linux" >Linux</input>-->
+<!--                <input type="checkbox" th:field="*{gender}" th:value="MacOs" >MAcOs</input>-->
+<!--                <input type="checkbox" th:field="*{gender}" th:value="'Microsoft Windows'" >Microsoft Windows</input>-->
 
             <button type="submit" class="btn btn-info col-2">Save</button>
 
