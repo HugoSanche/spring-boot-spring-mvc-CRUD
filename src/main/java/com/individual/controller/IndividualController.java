@@ -61,6 +61,16 @@ public class IndividualController {
         //send over to our form
         return "individuals/individual-form";
     }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("individualId2") int theId){
+
+        //delete the individual
+        individualService.deletedById(theId);
+
+        // redirect to the /individual/list
+        return "redirect:/individuals/list";
+    }
 }
 
 

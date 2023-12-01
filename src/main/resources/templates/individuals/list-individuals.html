@@ -45,11 +45,22 @@
                         class="btn btn-info btn-sm">
                         Update
                     </a>
+                    <!-- Add Delete button link-->
+                    <a th:href="@{/individuals/delete(individualId2=${tempIndividual.personId})}"
+                       class="btn btn-danger btn-sm"
+                        onclick="if (!(confirm('Are you sure you want to delete this individual?'))) return false">
+                        Delete
+                    </a>
+
+
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+
+
 
 
 
