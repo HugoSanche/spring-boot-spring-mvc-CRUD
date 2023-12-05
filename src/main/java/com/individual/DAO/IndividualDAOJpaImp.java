@@ -35,7 +35,6 @@ public class IndividualDAOJpaImp implements IndividualDAO{
 
     @Override
     public Individual save(Individual theIndividual) {
-
         //if id ==0 then insert/save else updated
         Individual dbIndividual=entityManager.merge(theIndividual);
         return entityManager.merge(dbIndividual);
@@ -48,3 +47,8 @@ public class IndividualDAOJpaImp implements IndividualDAO{
         entityManager.remove(theIndividual);
     }
 }
+
+
+
+
+

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.OffsetDateTime;
+import java.util.Currency;
 
 @Entity
 @Table(name="individuals")
@@ -67,7 +68,9 @@ public class Individual {
     @Column(name="Gender")
     String gender;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="CurrencyId")
+    private Currency currency;
 
 
     public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, String nacionality,
