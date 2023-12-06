@@ -42,7 +42,6 @@ public class Individual {
     @Column(name="DwellingType")
     String dwellingType;
 
-
     @Column(name="IsDwellingFreeOfEncumbrance")
     int isDwellingFreeOfEncumbrance;
 

@@ -37,6 +37,6 @@ public class IndividualServiceImpl implements IndividualService{
     @Transactional
     @Override
     public void deletedById(int theId) {
-        individualDAO.deletedById(theId);
+        individualDAO.deletedIndividualById(theId);
     }
 }

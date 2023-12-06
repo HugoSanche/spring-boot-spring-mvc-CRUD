@@ -1,6 +1,7 @@
 package com.individual;
 
 import com.individual.DAO.IndividualDAO;
+import com.individual.entity.Currenci;
 import com.individual.entity.Individual;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,11 +19,48 @@ public class ApiIndividualsApplication {
 			return runner -> {
 				//System.out.println("Hello Word");
 
-				findInstructor(individualDAO);
+				//findInstructor(individualDAO);
+				//deleteInstructor(individualDAO);
+
+				//findCurrency(individualDAO);
+
+				deleteCurrency(individualDAO);
 			};
 		}
 
-	private void findInstructor(IndividualDAO individualDAO) {
+	private void deleteCurrency(IndividualDAO individualDAO) {
+		int theId=1;
+
+		System.out.println("Delete the Id "+theId);
+
+		individualDAO.deletedCurrencyById(theId);
+
+		System.out.println("!Done");
+
+	}
+
+	private void findCurrency(IndividualDAO individualDAO) {
+		int theId=2;
+       Currenci theCurrenci= individualDAO.findCurrencyById(theId);
+
+		System.out.println("The Currency "+theCurrenci);
+
+		System.out.println("The individual "+theCurrenci.getIndividual());
+
+		System.out.println("!Done");
+	}
+
+	private void deleteIndividual(IndividualDAO individualDAO) {
+		int theId=100;
+		System.out.println("Deleting instructor id: "+theId);
+
+		individualDAO.deletedIndividualById(theId);
+
+		System.out.println("!Done");
+
+	}
+
+	private void findIndividual(IndividualDAO individualDAO) {
 		int theId=1;
 		System.out.println("Find individual id: "+theId);
 		Individual tempIndividual= individualDAO.findIndividualById(theId);

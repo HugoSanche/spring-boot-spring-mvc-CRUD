@@ -1,8 +1,10 @@
 package com.individual.DAO;
 
+import com.individual.entity.Currenci;
 import com.individual.entity.Individual;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -41,11 +43,25 @@ public class IndividualDAOJpaImp implements IndividualDAO{
          entityManager.persist(theIndividual);
     }
 
+    @Transactional
     @Override
-    public void deletedById(int theId) {
+    public void deletedIndividualById(int theId) {
         //find Individual by id
         Individual theIndividual=entityManager.find(Individual.class,theId);
         entityManager.remove(theIndividual);
+    }
+
+    @Override
+    public Currenci findCurrencyById(int theId) {
+           Currenci theCurrency= entityManager.find(Currenci.class,theId);
+        return theCurrency;
+    }
+
+    @Transactional
+    @Override
+    public void deletedCurrencyById(int theId) {
+        Currenci theCurrency=entityManager.find(Currenci.class,theId);
+        entityManager.remove(theCurrency);
     }
 }
 

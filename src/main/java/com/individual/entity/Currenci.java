@@ -23,6 +23,10 @@ import jakarta.persistence.*;
         @Column(name="symbol")
         private String symbol;
 
+        @OneToOne(mappedBy = "currency", cascade = CascadeType.ALL)
+       // @JoinColumn(name="CurrencyId") //name of class field individual not table
+        private  Individual individual;
+
         public Currenci(String name, String abbreviation, String comments, String nameInPlural, String symbol) {
             this.name = name;
             this.abbreviation = abbreviation;
@@ -57,6 +61,9 @@ import jakarta.persistence.*;
         public String getSymbol() {
             return symbol;
         }
+        public Individual getIndividual() {
+            return individual;
+        }
 
         public void setCurrencyId(int currencyId) {
             this.currencyId = currencyId;
@@ -81,7 +88,9 @@ import jakarta.persistence.*;
         public void setSymbol(String symbol) {
             this.symbol = symbol;
         }
-
+        public void setIndividual(Individual individual) {
+            this.individual = individual;
+        }
         @Override
         public String toString() {
             return "Currenci{" +
