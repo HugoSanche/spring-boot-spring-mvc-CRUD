@@ -25,13 +25,13 @@ public class IndividualServiceImpl implements IndividualService{
 
     @Override
     public Individual findById(int theId) {
-        return individualDAO.findById(theId);
+        return individualDAO.findIndividualById(theId);
     }
 
     @Transactional
     @Override
-    public Individual save(Individual theIndividual) {
-        return individualDAO.save(theIndividual);
+    public void save(Individual theIndividual) {
+        individualDAO.save(theIndividual);
     }
 
     @Transactional

@@ -25,7 +25,7 @@ public class IndividualDAOJpaImp implements IndividualDAO{
     }
 
     @Override
-    public Individual findById(int theId) {
+    public Individual findIndividualById(int theId) {
        Individual theIndividual=entityManager.find(Individual.class,theId);
 
        return theIndividual;
@@ -34,10 +34,11 @@ public class IndividualDAOJpaImp implements IndividualDAO{
     //NOTE:We don't use @Trasactional at DAO layer It will be handled al service layer
 
     @Override
-    public Individual save(Individual theIndividual) {
+    public void save(Individual theIndividual) {
         //if id ==0 then insert/save else updated
-        Individual dbIndividual=entityManager.merge(theIndividual);
-        return entityManager.merge(dbIndividual);
+       // Individual dbIndividual=entityManager.merge(theIndividual);
+        //return entityManager.merge(dbIndividual);
+         entityManager.persist(theIndividual);
     }
 
     @Override

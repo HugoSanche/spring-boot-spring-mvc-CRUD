@@ -2,7 +2,7 @@ package com.individual.entity;
 
 import jakarta.persistence.*;
 
-public class Currency {
+
 
     @Entity
     @Table(name="currencies")
@@ -95,4 +95,4 @@ public class Currency {
         }
     }
 
-}
+

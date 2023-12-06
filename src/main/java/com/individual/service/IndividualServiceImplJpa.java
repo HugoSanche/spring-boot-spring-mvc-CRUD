@@ -37,8 +37,8 @@ public class IndividualServiceImplJpa implements IndividualService {
     }
 
     @Override
-    public Individual save(Individual theEmployee) {
-        return individualRepository.save(theEmployee);
+    public void save(Individual theEmployee) {
+        individualRepository.save(theEmployee);
     }
 
     @Override
