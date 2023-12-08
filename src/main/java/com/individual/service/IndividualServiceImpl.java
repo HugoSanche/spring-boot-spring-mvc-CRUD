@@ -24,7 +24,7 @@ public class IndividualServiceImpl implements IndividualService{
     }
 
     @Override
-    public Individual findById(int theId) {
+    public Individual findById(String theId) {
         return individualDAO.findIndividualById(theId);
     }
 
@@ -36,7 +36,7 @@ public class IndividualServiceImpl implements IndividualService{
 
     @Transactional
     @Override
-    public void deletedById(int theId) {
+    public void deletedById(String theId) {
         individualDAO.deletedIndividualById(theId);
     }
 }

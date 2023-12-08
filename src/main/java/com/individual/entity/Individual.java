@@ -13,7 +13,7 @@ public class Individual {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PersonId")
-   public int personId;
+   public String personId;
 
     @Column(name="FirstName")
     String firstName;
@@ -72,8 +72,7 @@ public class Individual {
     private Currenci currency;
 
 
-
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, String nacionality,
+    public Individual(String personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, String nacionality,
                       int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob,
                       String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender) {
         this.personId=personId;
@@ -101,11 +100,11 @@ public class Individual {
     public Individual() {
     }
 
-    public int getPersonId() {
+    public String getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(String personId) {
         this.personId = personId;
     }
 
@@ -278,6 +277,14 @@ public class Individual {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setCurrency(Currenci currency) {
+        this.currency = currency;
     }
 
     @Override

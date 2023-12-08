@@ -27,7 +27,7 @@ public class IndividualDAOJpaImp implements IndividualDAO{
     }
 
     @Override
-    public Individual findIndividualById(int theId) {
+    public Individual findIndividualById(String theId) {
        Individual theIndividual=entityManager.find(Individual.class,theId);
 
        return theIndividual;
@@ -45,22 +45,29 @@ public class IndividualDAOJpaImp implements IndividualDAO{
 
     @Transactional
     @Override
-    public void deletedIndividualById(int theId) {
+    public void deletedIndividualById(String theId) {
         //find Individual by id
         Individual theIndividual=entityManager.find(Individual.class,theId);
         entityManager.remove(theIndividual);
     }
 
     @Override
-    public Currenci findCurrencyById(int theId) {
+    public Currenci findCurrencyById(String theId) {
            Currenci theCurrency= entityManager.find(Currenci.class,theId);
         return theCurrency;
     }
 
     @Transactional
     @Override
-    public void deletedCurrencyById(int theId) {
+    public void deletedCurrencyById(String theId) {
+
+        //retrieve Currency
         Currenci theCurrency=entityManager.find(Currenci.class,theId);
+
+        //remove the associate Object reference
+        //break reference link
+        theCurrency.getIndividual().setCurrency(null);
+
         entityManager.remove(theCurrency);
     }
 }

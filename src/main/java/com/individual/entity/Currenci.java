@@ -3,14 +3,13 @@ package com.individual.entity;
 import jakarta.persistence.*;
 
 
-
-    @Entity
+@Entity
     @Table(name="currencies")
     public class Currenci {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="currencyid")
-        private  int currencyId;
+        private  String currencyId;
         @Column(name="name")
         private  String name;
 
@@ -23,7 +22,7 @@ import jakarta.persistence.*;
         @Column(name="symbol")
         private String symbol;
 
-        @OneToOne(mappedBy = "currency", cascade = CascadeType.ALL)
+        @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
        // @JoinColumn(name="CurrencyId") //name of class field individual not table
         private  Individual individual;
 
@@ -38,7 +37,7 @@ import jakarta.persistence.*;
         public Currenci() {
         }
 
-        public int getCurrencyId() {
+        public String getCurrencyId() {
             return currencyId;
         }
 
@@ -65,7 +64,7 @@ import jakarta.persistence.*;
             return individual;
         }
 
-        public void setCurrencyId(int currencyId) {
+        public void setCurrencyId(String currencyId) {
             this.currencyId = currencyId;
         }
 
