@@ -13,7 +13,7 @@ public class Individual {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PersonId")
-   public String personId;
+   public int personId;
 
     @Column(name="FirstName")
     String firstName;
@@ -32,7 +32,7 @@ public class Individual {
 //    OffsetDateTime birthDate;
 
     @Column(name="Nacionality")
-    String nationality;
+    int nationality;
     @Column(name="NumberOfDependents")
     int numberOfDependents;
 
@@ -72,7 +72,7 @@ public class Individual {
     private Currenci currency;
 
 
-    public Individual(String personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, String nacionality,
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, int nacionality,
                       int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob,
                       String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender) {
         this.personId=personId;
@@ -100,11 +100,11 @@ public class Individual {
     public Individual() {
     }
 
-    public String getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
-    public void setPersonId(String personId) {
+    public void setPersonId(int personId) {
         this.personId = personId;
     }
 
@@ -136,7 +136,7 @@ public class Individual {
 //    }
 
 
-    public String getNacionality() {
+    public int getNacionality() {
         return nationality;
     }
 
@@ -187,7 +187,7 @@ public class Individual {
     public String getGender() {
         return gender;
     }
-    public String getNationality() {
+    public int getNationality() {
         return nationality;
     }
 
@@ -221,7 +221,7 @@ public class Individual {
 //        this.birthDate = birthDate;
 //    }
 
-    public void setNacionality(String nacionality) {
+    public void setNacionality(int nacionality) {
         this.nationality = nacionality;
     }
 
@@ -279,7 +279,7 @@ public class Individual {
         this.gender = gender;
     }
 
-    public void setNationality(String nationality) {
+    public void setNationality(int nationality) {
         this.nationality = nationality;
     }
 

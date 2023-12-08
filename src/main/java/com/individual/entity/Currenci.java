@@ -9,7 +9,7 @@ import jakarta.persistence.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="currencyid")
-        private  String currencyId;
+        private  int currencyId;
         @Column(name="name")
         private  String name;
 
@@ -37,7 +37,7 @@ import jakarta.persistence.*;
         public Currenci() {
         }
 
-        public String getCurrencyId() {
+        public int getCurrencyId() {
             return currencyId;
         }
 
@@ -64,7 +64,7 @@ import jakarta.persistence.*;
             return individual;
         }
 
-        public void setCurrencyId(String currencyId) {
+        public void setCurrencyId(int currencyId) {
             this.currencyId = currencyId;
         }
 

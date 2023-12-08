@@ -8,12 +8,12 @@ import java.util.List;
 public interface IndividualDAO {
     List<Individual> findAll();
 
-    Individual findIndividualById(String theId);
+    Individual findIndividualById(int theId);
      void save(Individual theIndividual);
 
-    void deletedIndividualById(String theId);
-    Currenci findCurrencyById(String theId);
+    void deletedIndividualById(int theId);
+    Currenci findCurrencyById(int theId);
 
-    void deletedCurrencyById(String theId);
+    void deletedCurrencyById(int theId);
 
 }

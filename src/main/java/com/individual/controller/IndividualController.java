@@ -50,7 +50,7 @@ public class IndividualController {
     }
 
     @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("individualId")String theId, Model theModel){
+    public String showFormForUpdate(@RequestParam("individualId")int theId, Model theModel){
 
         //get the employee from the service
         Individual theIndividual=individualService.findById(theId);
@@ -63,7 +63,7 @@ public class IndividualController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("individualId2") String theId){
+    public String delete(@RequestParam("individualId2") int theId){
 
         //delete the individual
         individualService.deletedById(theId);

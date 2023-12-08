@@ -20,7 +20,7 @@ public class IndividualServiceImplJpa implements IndividualService {
     }
 
     @Override
-    public Individual findById(String theId) {
+    public Individual findById(int theId) {
         Optional<Individual> result = individualRepository.findById(theId);
 
         Individual theEmployee = null;
@@ -42,7 +42,7 @@ public class IndividualServiceImplJpa implements IndividualService {
     }
 
     @Override
-    public void deletedById(String theId) {
+    public void deletedById(int theId) {
         individualRepository.deleteById(theId);
     }
 

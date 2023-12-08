@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IndividualService {
     List<Individual> findAll();
-    Individual findById(String theId);
+    Individual findById(int theId);
     void save(Individual theIndividual);
 
-    void deletedById(String theId);
+    void deletedById(int theId);
 }
