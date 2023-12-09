@@ -10,6 +10,10 @@ import jakarta.persistence.*;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="currencyid")
         private  int currencyId;
+
+
+
+
         @Column(name="name")
         private  String name;
 

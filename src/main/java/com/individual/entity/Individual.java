@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.OffsetDateTime;
 
 
 @Entity
@@ -26,6 +25,10 @@ public class Individual {
     String secondLastName;
     @Column(name="MaritalStatus")
     String maritalStatus;
+
+    @Column(name="BirthCountryId")
+    private int BirthCountryId;
+
 
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
@@ -71,18 +74,20 @@ public class Individual {
     @JoinColumn(name="CurrencyId")
     private Currenci currency;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="CountryIdx")
+    private Countries country;
 
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, OffsetDateTime birthDate, int nacionality,
-                      int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob,
-                      String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender) {
-        this.personId=personId;
+
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int birthCountryId, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
+        this.personId = personId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.maritalStatus = maritalStatus;
-       // this.birthDate = birthDate;
-        this.nationality = nacionality;
+        BirthCountryId = birthCountryId;
+        this.nationality = nationality;
         this.numberOfDependents = numberOfDependents;
         this.divorceLegalAgreement = divorceLegalAgreement;
         this.dwellingType = dwellingType;
@@ -95,10 +100,30 @@ public class Individual {
         this.hiringType = hiringType;
         this.externalEmployeeNumber = externalEmployeeNumber;
         this.gender = gender;
+        this.currency = currency;
+        this.country = country;
     }
 
     public Individual() {
     }
+
+    public Countries getCountry() {
+        return country;
+    }
+
+    public void setCountry(Countries country) {
+        this.country = country;
+    }
+
+    public int getBirthCountryId() {
+        return BirthCountryId;
+    }
+
+    public void setBirthCountryId(int birthCountryId) {
+        BirthCountryId = birthCountryId;
+    }
+
+
 
     public int getPersonId() {
         return personId;
@@ -194,7 +219,9 @@ public class Individual {
     public Currenci getCurrency() {
         return currency;
     }
-
+//    public Countries getCountry() {
+//        return country;
+//    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
         System.out.println("First Name : "+this.firstName);
@@ -287,6 +314,11 @@ public class Individual {
         this.currency = currency;
     }
 
+
+
+//    public void setCountry(Countries country) {
+//        this.country = country;
+//    }
     @Override
     public String toString() {
         return "Individual{" +

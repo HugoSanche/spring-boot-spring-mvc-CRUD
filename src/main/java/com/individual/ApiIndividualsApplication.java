@@ -17,14 +17,14 @@ public class ApiIndividualsApplication {
 	@Bean
 		public CommandLineRunner commandLineRunner (IndividualDAO individualDAO){
 			return runner -> {
-				//System.out.println("Hello Word");
+				System.out.println("Hello Word");
 
-				//findInstructor(individualDAO);
+				findIndividual(individualDAO);
 				//deleteInstructor(individualDAO);
 
-				//findCurrency(individualDAO);
+			//	findCurrency(individualDAO);
 
-				deleteCurrency(individualDAO);
+			//	deleteCurrency(individualDAO);
 			};
 		}
 
