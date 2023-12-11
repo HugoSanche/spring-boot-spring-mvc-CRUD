@@ -26,9 +26,9 @@ public class Individual {
     @Column(name="MaritalStatus")
     String maritalStatus;
 
-    @Column(name="BirthCountryId")
-    private int BirthCountryId;
-
+//    @Column(name="BirthCountryId")
+//    private int BirthCountryId;
+//
 
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
@@ -75,18 +75,18 @@ public class Individual {
     private Currenci currency;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="CountryIdx")
+    @JoinColumn(name="BirthCountryId")
     private Countries country;
 
 
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int birthCountryId, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
         this.personId = personId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.maritalStatus = maritalStatus;
-        BirthCountryId = birthCountryId;
+     //  BirthCountryId = birthCountryId;
         this.nationality = nationality;
         this.numberOfDependents = numberOfDependents;
         this.divorceLegalAgreement = divorceLegalAgreement;
@@ -113,14 +113,6 @@ public class Individual {
 
     public void setCountry(Countries country) {
         this.country = country;
-    }
-
-    public int getBirthCountryId() {
-        return BirthCountryId;
-    }
-
-    public void setBirthCountryId(int birthCountryId) {
-        BirthCountryId = birthCountryId;
     }
 
 

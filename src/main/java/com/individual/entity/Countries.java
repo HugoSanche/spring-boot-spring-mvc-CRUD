@@ -10,31 +10,38 @@ public class Countries {
     @Column(name="countryId")
     private  int countryId;
 
-
-
-
     @Column(name="Name")
     private String name;
 
     @Column(name="Nationality")
     private String Nationality;
 
-    @Column(name="CurrencyId")
-    private int currency;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="CurrencyId")
+    private Currenci currency2;
 
     @OneToOne(mappedBy = "country", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
     // @JoinColumn(name="CurrencyId") //name of class field individual not table
     private  Individual individual;
 
+
+
     public Countries() {
     }
 
-    public Countries(int countryId, String name, String nationality, int currency, Individual individual) {
+    public Countries(int countryId, String name, String nationality, Individual individual) {
         this.countryId = countryId;
         this.name = name;
         Nationality = nationality;
-        this.currency = currency;
         this.individual = individual;
+    }
+
+    public Currenci getCurrency() {
+        return currency2;
+    }
+
+    public void setCurrency(Currenci currency) {
+        this.currency2 = currency;
     }
 
     public int getCountryId() {
@@ -77,13 +84,6 @@ public class Countries {
         Nationality = nationality;
     }
 
-    public int getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(int currency) {
-        this.currency = currency;
-    }
 
 //    public Individual getIndividual() {
 //        return individual;
@@ -99,7 +99,7 @@ public class Countries {
                 "countryId=" + countryId +
                 ", name='" + name + '\'' +
                 ", Nationality='" + Nationality + '\'' +
-                ", currency=" + currency +
+                ", currency=" + currency2 +
                // ", individual=" + individual +
                 '}';
     }

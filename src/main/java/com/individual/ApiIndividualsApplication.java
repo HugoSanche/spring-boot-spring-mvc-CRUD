@@ -19,12 +19,12 @@ public class ApiIndividualsApplication {
 			return runner -> {
 				System.out.println("Hello Word");
 
-				findIndividual(individualDAO);
+				//findIndividual(individualDAO);
 				//deleteInstructor(individualDAO);
 
 			//	findCurrency(individualDAO);
 
-			//	deleteCurrency(individualDAO);
+				deleteCurrency(individualDAO);
 			};
 		}
 
@@ -41,7 +41,7 @@ public class ApiIndividualsApplication {
 
 	private void findCurrency(IndividualDAO individualDAO) {
 		int theId=1;
-       Currenci theCurrenci= individualDAO.findCurrencyById(theId);
+        Currenci theCurrenci= individualDAO.findCurrencyById(theId);
 
 		System.out.println("The Currency "+theCurrenci);
 

@@ -30,6 +30,10 @@ import jakarta.persistence.*;
        // @JoinColumn(name="CurrencyId") //name of class field individual not table
         private  Individual individual;
 
+        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
+        // @JoinColumn(name="CurrencyId") //name of class field individual not table
+        private  Countries countries;
+
         public Currenci(String name, String abbreviation, String comments, String nameInPlural, String symbol) {
             this.name = name;
             this.abbreviation = abbreviation;
@@ -38,10 +42,20 @@ import jakarta.persistence.*;
             this.symbol = symbol;
         }
 
+
+
         public Currenci() {
         }
 
-        public int getCurrencyId() {
+    public Countries getCountries() {
+        return countries;
+    }
+
+    public void setCountries(Countries countries) {
+        this.countries = countries;
+    }
+
+    public int getCurrencyId() {
             return currencyId;
         }
 

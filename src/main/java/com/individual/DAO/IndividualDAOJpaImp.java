@@ -66,9 +66,19 @@ public class IndividualDAOJpaImp implements IndividualDAO{
 
         //remove the associate Object reference
         //break reference link
+
+        System.out.println("Uno");
         theCurrency.getIndividual().setCurrency(null);
-        //theCurrency.getIndividual().setCountry(null);
-        System.out.println(theCurrency.getIndividual());
+
+        System.out.println("Dos");
+        theCurrency.getIndividual().setCountry(null);
+        System.out.println("Tres");
+
+        theCurrency.getCountries().setCurrency(null);
+        System.out.println("Tres");
+
+
+       // System.out.println(theCurrency.getIndividual());
         entityManager.remove(theCurrency);
     }
 }
