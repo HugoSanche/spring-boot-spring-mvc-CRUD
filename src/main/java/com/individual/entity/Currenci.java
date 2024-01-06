@@ -26,13 +26,11 @@ import jakarta.persistence.*;
         @Column(name="symbol")
         private String symbol;
 
-        @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
-       // @JoinColumn(name="CurrencyId") //name of class field individual not table
-        private  Individual individual;
+//        @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
+//        private  Individual individual;
 
-        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
-        // @JoinColumn(name="CurrencyId") //name of class field individual not table
-        private  Countries countries;
+//        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
+//        private  Countries countries;
 
         public Currenci(String name, String abbreviation, String comments, String nameInPlural, String symbol) {
             this.name = name;
@@ -47,13 +45,13 @@ import jakarta.persistence.*;
         public Currenci() {
         }
 
-    public Countries getCountries() {
-        return countries;
-    }
-
-    public void setCountries(Countries countries) {
-        this.countries = countries;
-    }
+//    public Countries getCountries() {
+//        return countries;
+//    }
+//
+//    public void setCountries(Countries countries) {
+//        this.countries = countries;
+//    }
 
     public int getCurrencyId() {
             return currencyId;
@@ -78,9 +76,7 @@ import jakarta.persistence.*;
         public String getSymbol() {
             return symbol;
         }
-        public Individual getIndividual() {
-            return individual;
-        }
+
 
         public void setCurrencyId(int currencyId) {
             this.currencyId = currencyId;
@@ -105,9 +101,7 @@ import jakarta.persistence.*;
         public void setSymbol(String symbol) {
             this.symbol = symbol;
         }
-        public void setIndividual(Individual individual) {
-            this.individual = individual;
-        }
+
         @Override
         public String toString() {
             return "Currenci{" +

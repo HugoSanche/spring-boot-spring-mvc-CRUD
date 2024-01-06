@@ -1,7 +1,6 @@
 package com.individual;
 
 import com.individual.DAO.IndividualDAO;
-import com.individual.entity.Currenci;
 import com.individual.entity.Individual;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,12 +18,12 @@ public class ApiIndividualsApplication {
 			return runner -> {
 				System.out.println("Hello Word");
 
-				//findIndividual(individualDAO);
+				findIndividual(individualDAO);
 				//deleteInstructor(individualDAO);
 
-			//	findCurrency(individualDAO);
+				//findCurrency(individualDAO);
 
-				deleteCurrency(individualDAO);
+			//	deleteCurrency(individualDAO);
 			};
 		}
 
@@ -41,11 +40,11 @@ public class ApiIndividualsApplication {
 
 	private void findCurrency(IndividualDAO individualDAO) {
 		int theId=1;
-        Currenci theCurrenci= individualDAO.findCurrencyById(theId);
+        //Currenci theCurrenci= individualDAO.findCurrencyById(theId);
 
-		System.out.println("The Currency "+theCurrenci);
+		//System.out.println("The Currency "+theCurrenci);
 
-		System.out.println("The individual "+theCurrenci.getIndividual());
+		//System.out.println("The individual "+theCurrenci.getIndividual());
 
 		System.out.println("!Done");
 	}
@@ -63,9 +62,12 @@ public class ApiIndividualsApplication {
 	private void findIndividual(IndividualDAO individualDAO) {
 		int theId=1;
 		System.out.println("Find individual id: "+theId);
+
+		//get individual
 		Individual tempIndividual= individualDAO.findIndividualById(theId);
 		System.out.println("tempIndividual "+tempIndividual);
-		System.out.println("the associated individual only "+tempIndividual.getCurrency());
+		System.out.println("the associated individual Currency "+tempIndividual.getCurrency());
+		System.out.println("The associated individual Country "+tempIndividual.getCountries());
 
 	}
 }

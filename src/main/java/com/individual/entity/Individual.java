@@ -26,9 +26,8 @@ public class Individual {
     @Column(name="MaritalStatus")
     String maritalStatus;
 
-//    @Column(name="BirthCountryId")
-//    private int BirthCountryId;
-//
+
+
 
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
@@ -70,13 +69,16 @@ public class Individual {
     @Column(name="Gender")
     String gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name="CurrencyId")
     private Currenci currency;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+   // @PrimaryKeyJoinColumn(name="BirthCountryId")
     @JoinColumn(name="BirthCountryId")
-    private Countries country;
+    //  @Column(name="BirthCountryId")
+    private Countries countries;
+
 
 
     public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
@@ -101,19 +103,13 @@ public class Individual {
         this.externalEmployeeNumber = externalEmployeeNumber;
         this.gender = gender;
         this.currency = currency;
-        this.country = country;
+
     }
 
     public Individual() {
     }
 
-    public Countries getCountry() {
-        return country;
-    }
 
-    public void setCountry(Countries country) {
-        this.country = country;
-    }
 
 
 
@@ -306,9 +302,15 @@ public class Individual {
         this.currency = currency;
     }
 
+    public Countries getCountries() {
+        return countries;
+    }
 
+    public void setCountries(Countries countries) {
+        this.countries = countries;
+    }
 
-//    public void setCountry(Countries country) {
+    //    public void setCountry(Countries country) {
 //        this.country = country;
 //    }
     @Override

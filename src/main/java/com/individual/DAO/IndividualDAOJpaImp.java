@@ -57,10 +57,13 @@ public class IndividualDAOJpaImp implements IndividualDAO{
         return theCurrency;
     }
 
+
+
     @Transactional
     @Override
     public void deletedCurrencyById(int theId) {
 
+        System.out.println("TEST");
         //retrieve Currency
         Currenci theCurrency=entityManager.find(Currenci.class,theId);
 
@@ -68,14 +71,14 @@ public class IndividualDAOJpaImp implements IndividualDAO{
         //break reference link
 
         System.out.println("Uno");
-        theCurrency.getIndividual().setCurrency(null);
-
-        System.out.println("Dos");
-        theCurrency.getIndividual().setCountry(null);
-        System.out.println("Tres");
-
-        theCurrency.getCountries().setCurrency(null);
-        System.out.println("Tres");
+      //  theCurrency.getIndividual().setCurrency(null);
+//
+//        System.out.println("Dos");
+//        theCurrency.getIndividual().setCountry(null);
+//        System.out.println("Tres");
+//
+//        theCurrency.getCountries().setCurrency(null);
+//        System.out.println("Tres");
 
 
        // System.out.println(theCurrency.getIndividual());
