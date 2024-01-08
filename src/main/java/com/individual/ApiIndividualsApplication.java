@@ -23,7 +23,7 @@ public class ApiIndividualsApplication {
 				//deleteIndividual(individualDAO);
 
 				//findCurrency(individualDAO);
-				deleteIndividual(individualDAO);
+				//deleteIndividual(individualDAO);
 				//deleteCurrency(individualDAO);
 			};
 		}
@@ -51,7 +51,7 @@ public class ApiIndividualsApplication {
 	}
 
 	private void deleteIndividual(IndividualDAO individualDAO) {
-		int theId=13;
+		int theId=14;
 		System.out.println("Deleting individual id: "+theId);
 
 		individualDAO.deletedIndividualById(theId);
