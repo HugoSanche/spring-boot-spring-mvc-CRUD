@@ -10,7 +10,7 @@ public interface IndividualDAO {
 
     Individual findIndividualById(int theId);
      void save(Individual theIndividual);
-
+    void update(Individual theIndividual);
     void deletedIndividualById(int theId);
     Currenci findCurrencyById(int theId);
 

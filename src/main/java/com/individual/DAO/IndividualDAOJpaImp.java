@@ -37,11 +37,25 @@ public class IndividualDAOJpaImp implements IndividualDAO{
 
     @Override
     public void save(Individual theIndividual) {
-        //if id ==0 then insert/save else updated
-       // Individual dbIndividual=entityManager.merge(theIndividual);
-        //return entityManager.merge(dbIndividual);
-         entityManager.persist(theIndividual);
+
+        System.out.println("Save the individual "+theIndividual);
+        try {
+            entityManager.persist(theIndividual);
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
+
+    @Override
+    public void update(Individual theIndividual) {
+        System.out.println("Update the individual "+theIndividual);
+        try {
+            entityManager.merge(theIndividual);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 
     @Transactional
     @Override

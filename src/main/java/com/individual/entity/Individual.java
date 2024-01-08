@@ -66,13 +66,13 @@ public class Individual {
     @Column(name="Gender")
     String gender;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name="CurrencyId")
     private Currenci currency;
 
 
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
    // @PrimaryKeyJoinColumn(name="BirthCountryId")
     @JoinColumn(name="BirthCountryId")
     //  @Column(name="BirthCountryId")
