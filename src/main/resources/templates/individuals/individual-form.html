@@ -13,7 +13,7 @@
         <h3>Individual Directory</h3>
         <hr>
         <p class="h4 mb-4">Save Individual</p>
-        <form action="#" th:action="@{/individuals/save}"
+        <form action="#" th:action="@{/individuals/update}"
                         th:object="${individual}" method="POST">
 
             <!-- Add hidden form filed to handle the update-->
@@ -28,13 +28,13 @@
             <input type="text" th:field="*{secondLastName}"
                    class="form-control mb-4 w-25" placeholder="Second Last Name">
 
-<!--            <input type="text" th:field="*{maritalStatus}"-->
-<!--                   class="form-control mb-4 w-25" placeholder="Marital Status">-->
+            <label>Marital Status</label>
 
-            <input type="radio" th:field="*{maritalStatus}"
-                   th:each="tempLang : ${languages}"
-                   th:value="${tempLang}"
-                   th:text="${tempLang}"/>
+            <select th:field="*{maritalStatus}">
+                <option th:each="marital : ${listMaritalStatus}" th:value="${p}" th:text="${marital}">
+            </select>
+            <br/>
+            <br/>
 
 
 <!--            <input type="text" th:field="*{birthDate}"-->
@@ -58,8 +58,6 @@
 
             <input type="text" th:field="*{occupation}"
                    class="form-control mb-4 w-25" placeholder="Occupation">
-
-
 
 
 
@@ -92,7 +90,7 @@
 <!--                <input type="checkbox" th:field="*{gender}" th:value="MacOs" >MAcOs</input>-->
 <!--                <input type="checkbox" th:field="*{gender}" th:value="'Microsoft Windows'" >Microsoft Windows</input>-->
 
-            <button type="submit" class="btn btn-info col-2">Save</button>
+            <button type="submit" class="btn btn-info col-2">Update</button>
 
 
         </form>

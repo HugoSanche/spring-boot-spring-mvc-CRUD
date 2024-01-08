@@ -34,6 +34,7 @@ public class IndividualServiceImpl implements IndividualService{
         individualDAO.save(theIndividual);
     }
 
+    @Transactional
     @Override
     public void update(Individual theIndividual) {
         individualDAO.update(theIndividual);

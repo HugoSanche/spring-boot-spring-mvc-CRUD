@@ -70,15 +70,11 @@ public class Individual {
     @JoinColumn(name="CurrencyId")
     private Currenci currency;
 
-
-
     @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
    // @PrimaryKeyJoinColumn(name="BirthCountryId")
     @JoinColumn(name="BirthCountryId")
     //  @Column(name="BirthCountryId")
     private Countries countries;
-
-
 
     public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
         this.personId = personId;

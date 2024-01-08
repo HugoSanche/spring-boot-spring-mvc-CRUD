@@ -46,6 +46,7 @@ public class IndividualDAOJpaImp implements IndividualDAO{
         }
     }
 
+
     @Override
     public void update(Individual theIndividual) {
         System.out.println("Update the individual "+theIndividual);

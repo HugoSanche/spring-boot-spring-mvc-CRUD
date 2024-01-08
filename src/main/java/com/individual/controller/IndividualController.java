@@ -36,6 +36,9 @@ public class IndividualController {
         // create model attribute to bind form data
         Individual theEmployee =new Individual();
         theModel.addAttribute("individual",theEmployee);
+
+
+
         return "individuals/individual-form";
     }
 
@@ -48,7 +51,15 @@ public class IndividualController {
         // use a redirect to prevent duplicate submissions
         return "redirect:/individuals/list";
     }
+    @PostMapping("/update")
+    public String updateIndividual(@ModelAttribute("individual") Individual theIndividual){
 
+        //save the individual
+        individualService.update(theIndividual);
+
+        // use a redirect to prevent duplicate submissions
+        return "redirect:/individuals/list";
+    }
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("individualId")int theId, Model theModel){
 
@@ -58,6 +69,11 @@ public class IndividualController {
         // set employee in the model to prepulate the form
         theModel.addAttribute("individual", theIndividual);
 
+        String listMaritalStatus= theIndividual.getMaritalStatus();
+        //List<String> listMaritalStatus= Arrays.asList("Widowed", "Unknown", "Single", "Married", "LivingTogether", "Divorced");
+
+        System.out.println("Marital Status "+theIndividual.getMaritalStatus());
+        theModel.addAttribute("listMaritalStatus",listMaritalStatus);
         //send over to our form
         return "individuals/individual-form";
     }
