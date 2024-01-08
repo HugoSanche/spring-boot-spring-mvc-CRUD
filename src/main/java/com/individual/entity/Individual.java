@@ -26,9 +26,6 @@ public class Individual {
     @Column(name="MaritalStatus")
     String maritalStatus;
 
-
-
-
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
 //    OffsetDateTime birthDate;
@@ -72,6 +69,8 @@ public class Individual {
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name="CurrencyId")
     private Currenci currency;
+
+
 
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
    // @PrimaryKeyJoinColumn(name="BirthCountryId")

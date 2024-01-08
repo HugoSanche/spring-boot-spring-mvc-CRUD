@@ -48,6 +48,10 @@ public class IndividualDAOJpaImp implements IndividualDAO{
     public void deletedIndividualById(int theId) {
         //find Individual by id
         Individual theIndividual=entityManager.find(Individual.class,theId);
+
+       theIndividual.setCurrency(null);
+       entityManager.merge(theIndividual);
+        System.out.println("Delete individual by Id "+theIndividual);
         entityManager.remove(theIndividual);
     }
 
@@ -80,8 +84,9 @@ public class IndividualDAOJpaImp implements IndividualDAO{
 //        theCurrency.getCountries().setCurrency(null);
 //        System.out.println("Tres");
 
-
        // System.out.println(theCurrency.getIndividual());
+
+        System.out.println("The Currency "+theCurrency);
         entityManager.remove(theCurrency);
     }
 }

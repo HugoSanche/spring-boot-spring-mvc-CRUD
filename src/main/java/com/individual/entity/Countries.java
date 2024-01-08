@@ -2,8 +2,6 @@ package com.individual.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "countries")
 public class Countries {
@@ -22,8 +20,8 @@ public class Countries {
 //    @JoinColumn(name="CurrencyId")
 //    private Currenci currency2;
 
-    @OneToMany()
-    List<Individual> individuals;
+    //@OneToMany()
+    //List<Individual> individuals;
 
     public Countries() {
     }

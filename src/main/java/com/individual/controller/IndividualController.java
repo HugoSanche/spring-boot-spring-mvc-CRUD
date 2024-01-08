@@ -66,7 +66,7 @@ public class IndividualController {
     public String delete(@RequestParam("individualId2") int theId){
 
         //delete the individual
-        individualService.deletedById(theId);
+        individualService.deletedById_X(theId);
 
         // redirect to the /individual/list
         return "redirect:/individuals/list";

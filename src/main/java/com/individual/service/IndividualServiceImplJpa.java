@@ -42,7 +42,7 @@ public class IndividualServiceImplJpa implements IndividualService {
     }
 
     @Override
-    public void deletedById(int theId) {
+    public void deletedById_X(int theId) {
         individualRepository.deleteById(theId);
     }
 

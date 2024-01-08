@@ -12,8 +12,6 @@ import jakarta.persistence.*;
         private  int currencyId;
 
 
-
-
         @Column(name="name")
         private  String name;
 
@@ -26,8 +24,9 @@ import jakarta.persistence.*;
         @Column(name="symbol")
         private String symbol;
 
-//        @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
-//        private  Individual individual;
+        
+        @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
+        private  Individual individual;
 
 //        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
 //        private  Countries countries;
@@ -102,7 +101,15 @@ import jakarta.persistence.*;
             this.symbol = symbol;
         }
 
-        @Override
+    public Individual getIndividual() {
+        return individual;
+    }
+
+    public void setIndividual(Individual individual) {
+        this.individual = individual;
+    }
+
+    @Override
         public String toString() {
             return "Currenci{" +
                     // "currencyId=" + currencyId +
