@@ -37,12 +37,15 @@
             <label>Marital Status</label>
             <br>
             <select th:field="*{maritalStatus}">
-                <option th:each="marital : ${listMaritalStatus}" th:value="${p}" th:text="${marital}">
+                <option selected="selected" value="*{maritalStatus}">Single</option>
+                <option value="LivingTogether">LivingTogether</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Unknown">Unknown</option>
             </select>
-            <br/>
-            <br/>
-
-
+            <br>
+            <br>
 <!--            <input type="text" th:field="*{birthDate}"-->
 <!--                   class="form-control mb-4 w-25" placeholder="Birth Date">-->
 
@@ -72,8 +75,9 @@
 
 
 
-<!--            <input type="text" th:field="*{startDateInCurrentJob}"-->
-<!--                   class="form-control mb-4 w-25" placeholder="start Date In Current Job">-->
+            <label>Start Date In Current Job</label>
+            <input type="date" th:field="*{startDateInCurrentJob}"
+                   class="form-control mb-4 w-25" placeholder="start Date In Current Job">
 
             <label>current Position Name</label>
             <input type="text" th:field="*{currentPositionName}"

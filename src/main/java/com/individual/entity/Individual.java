@@ -1,6 +1,7 @@
 package com.individual.entity;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,16 +18,16 @@ public class Individual implements Serializable {
    public int personId;
 
     @Column(name="FirstName")
-    String firstName;
+    private String firstName;
 
     @Column(name = "MiddleName")
-    String middleName;
+    private String middleName;
     @Column(name="FirstLastName")
-    String firstLastName;
+    private String firstLastName;
     @Column(name="SecondLastName")
-    String secondLastName;
+    private String secondLastName;
     @Column(name="MaritalStatus")
-    String maritalStatus;
+    private String maritalStatus;
 
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
@@ -34,43 +35,43 @@ public class Individual implements Serializable {
     @Column(name = "BirthDate", nullable = false, updatable = false)
     private Date birthDate;
 
-
-
     @Column(name="Nacionality")
-    int nationality;
+    private int nationality;
     @Column(name="NumberOfDependents")
-    int numberOfDependents;
+    private int numberOfDependents;
 
     @Column(name="DivorceLegalAgreement")
-    String divorceLegalAgreement;
+    private String divorceLegalAgreement;
 
     @Column(name="DwellingType")
-    String dwellingType;
+    private String dwellingType;
 
     @Column(name="IsDwellingFreeOfEncumbrance")
-    int isDwellingFreeOfEncumbrance;
+    private int isDwellingFreeOfEncumbrance;
 
     @Column(name="Occupation")
-    String occupation;
+    private String occupation;
 
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy, timezone = UTC")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="StartDateInCurrentJob")
-    Date startDateInCurrentJob;
+    private Date startDateInCurrentJob;
 
     @Column(name="CurrentPositionName")
-    String currentPositionName;
+    private String currentPositionName;
 
     @Column(name="CurrentMonthlyIncome")
-    BigDecimal currentMonthlyIncome;
+    private BigDecimal currentMonthlyIncome;
 
     @Column(name="DoesBizActivities")
-    int doesBizActivities;
+    private int doesBizActivities;
 
     @Column(name="HiringType")
-    String hiringType;
+    private String hiringType;
     @Column(name="ExternalEmployeeNumber")
-    String externalEmployeeNumber;
+    private String externalEmployeeNumber;
     @Column(name="Gender")
-    String gender;
+    private String gender;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name="CurrencyId")
@@ -327,6 +328,8 @@ public class Individual implements Serializable {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
+
+
 
     //    public void setCountry(Countries country) {
 //        this.country = country;
