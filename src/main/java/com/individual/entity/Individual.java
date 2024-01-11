@@ -2,13 +2,15 @@ package com.individual.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
+
 
 
 @Entity
 @Table(name="individuals")
-public class Individual {
+public class Individual implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PersonId")
@@ -29,6 +31,10 @@ public class Individual {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
 //    OffsetDateTime birthDate;
+    @Column(name = "BirthDate", nullable = false, updatable = false)
+    private Date birthDate;
+
+
 
     @Column(name="Nacionality")
     int nationality;
@@ -75,6 +81,15 @@ public class Individual {
     @JoinColumn(name="BirthCountryId")
     //  @Column(name="BirthCountryId")
     private Countries countries;
+
+    @PrePersist
+    protected void prePersist() {
+        if (this.birthDate == null) birthDate = new Date();
+
+    }
+
+
+
 
     public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
         this.personId = personId;
@@ -303,6 +318,14 @@ public class Individual {
 
     public void setCountries(Countries countries) {
         this.countries = countries;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     //    public void setCountry(Countries country) {

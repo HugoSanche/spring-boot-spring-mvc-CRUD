@@ -2,60 +2,76 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Individual</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Add Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
         <h3>Individual Directory</h3>
         <hr>
-        <p class="h4 mb-4">Save Individual</p>
-        <form action="#" th:action="@{/individuals/update}"
+        <p class="h4 mb-4">Add Individual</p>
+        <form action="#" th:action="@{/individuals/save}"
                         th:object="${individual}" method="POST">
 
             <!-- Add hidden form filed to handle the update-->
             <input type="hidden" th:field="*{personId}">
 
+            <label>First Name</label>
             <input type="text" th:field="*{firstName}"
                         class="form-control mb-4 w-25" placeholder="First Name">
+            <label>Middle Name</label>
             <input type="text" th:field="*{middleName}"
                    class="form-control mb-4 w-25" placeholder="Middle Name">
+
+            <label>First Last Name</label>
             <input type="text" th:field="*{firstLastName}"
                    class="form-control mb-4 w-25" placeholder="First Last Name">
+
+            <label>Second Last Name</label>
             <input type="text" th:field="*{secondLastName}"
                    class="form-control mb-4 w-25" placeholder="Second Last Name">
 
             <label>Marital Status</label>
-
+            <br>
             <select th:field="*{maritalStatus}">
-                <option th:each="marital : ${listMaritalStatus}" th:value="${p}" th:text="${marital}">
+                <option selected="selected" value="Single">Single</option>
+                <option value="LivingTogether">LivingTogether</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Unknown">Unknown</option>
             </select>
             <br/>
             <br/>
 
-
+<!--            <label>Birth Date</label>-->
 <!--            <input type="text" th:field="*{birthDate}"-->
 <!--                   class="form-control mb-4 w-25" placeholder="Birth Date">-->
 
+            <label>Nationality</label>
             <input type="text" th:field="*{nacionality}"
                    class="form-control mb-4 w-25" placeholder="Nationality">
 
+            <label>Number Of Dependents</label>
             <input type="text" th:field="*{numberOfDependents}"
                    class="form-control mb-4 w-25" placeholder="Number Of Dependents">
 
+            <label>Divorce Legal Agreement</label>
             <input type="text" th:field="*{divorceLegalAgreement}"
                    class="form-control mb-4 w-25" placeholder="Divorce Legal Agreement">
 
-
+            <label>Dwelling Type</label>
             <input type="text" th:field="*{dwellingType}"
                    class="form-control mb-4 w-25" placeholder="Dwelling Type">
 
+            <label>Is Dwelling Free Of Encumbrance</label>
             <input type="text" th:field="*{isDwellingFreeOfEncumbrance}"
                    class="form-control mb-4 w-25" placeholder="Is Dwelling Free Of Encumbrance">
 
+            <label>Occupation</label>
             <input type="text" th:field="*{occupation}"
                    class="form-control mb-4 w-25" placeholder="Occupation">
 
@@ -64,22 +80,27 @@
 <!--            <input type="text" th:field="*{startDateInCurrentJob}"-->
 <!--                   class="form-control mb-4 w-25" placeholder="start Date In Current Job">-->
 
-
+            <label>current Position Name</label>
             <input type="text" th:field="*{currentPositionName}"
                    class="form-control mb-4 w-25" placeholder="current Position Name">
 
+            <label>current Monthly Income</label>
             <input type="text" th:field="*{currentMonthlyIncome}"
                    class="form-control mb-4 w-25" placeholder="current Monthly Income">
 
+            <label>Does Biz Activities</label>
             <input type="text" th:field="*{doesBizActivities}"
                    class="form-control mb-4 w-25" placeholder="Does Biz Activities">
 
+            <label>Hiring Type</label>
             <input type="text" th:field="*{hiringType}"
                    class="form-control mb-4 w-25" placeholder="Hiring Type">
 
+            <label>External Employee Number</label>
             <input type="text" th:field="*{externalEmployeeNumber}"
                    class="form-control mb-4 w-25" placeholder="External Employee Number">
 
+            <label>Gender</label>
             <input type="text" th:field="*{gender}"
                    class="form-control mb-4 w-25" placeholder="Gender">
 
@@ -90,7 +111,7 @@
 <!--                <input type="checkbox" th:field="*{gender}" th:value="MacOs" >MAcOs</input>-->
 <!--                <input type="checkbox" th:field="*{gender}" th:value="'Microsoft Windows'" >Microsoft Windows</input>-->
 
-            <button type="submit" class="btn btn-info col-2">Update</button>
+            <button type="submit" class="btn btn-info col-2">Add</button>
 
 
         </form>

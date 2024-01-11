@@ -35,11 +35,30 @@ public class IndividualController {
 
         // create model attribute to bind form data
         Individual theEmployee =new Individual();
+
+
         theModel.addAttribute("individual",theEmployee);
 
+        return "individuals/Add-individual";
+    }
 
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("individualId")int theId, Model theModel){
 
-        return "individuals/individual-form";
+        //get the employee from the service
+        Individual theIndividual=individualService.findById(theId);
+
+        // set employee in the model to prepulate the form
+        theModel.addAttribute("individual", theIndividual);
+
+        String listMaritalStatus= theIndividual.getMaritalStatus();
+        //List<String> listMaritalStatus= Arrays.asList("Widowed", "Unknown", "Single", "Married", "LivingTogether", "Divorced");
+
+        System.out.println("The Individual "+theIndividual);
+        System.out.println("Marital Status "+theIndividual.getMaritalStatus());
+        theModel.addAttribute("listMaritalStatus",listMaritalStatus);
+        //send over to our form
+        return "individuals/Update-individual";
     }
 
     @PostMapping("/save")
@@ -60,23 +79,7 @@ public class IndividualController {
         // use a redirect to prevent duplicate submissions
         return "redirect:/individuals/list";
     }
-    @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("individualId")int theId, Model theModel){
 
-        //get the employee from the service
-        Individual theIndividual=individualService.findById(theId);
-
-        // set employee in the model to prepulate the form
-        theModel.addAttribute("individual", theIndividual);
-
-        String listMaritalStatus= theIndividual.getMaritalStatus();
-        //List<String> listMaritalStatus= Arrays.asList("Widowed", "Unknown", "Single", "Married", "LivingTogether", "Divorced");
-
-        System.out.println("Marital Status "+theIndividual.getMaritalStatus());
-        theModel.addAttribute("listMaritalStatus",listMaritalStatus);
-        //send over to our form
-        return "individuals/individual-form";
-    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("individualId2") int theId){
