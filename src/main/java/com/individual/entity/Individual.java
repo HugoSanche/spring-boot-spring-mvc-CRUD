@@ -120,10 +120,6 @@ public class Individual implements Serializable {
     public Individual() {
     }
 
-
-
-
-
     public int getPersonId() {
         return personId;
     }
@@ -151,14 +147,6 @@ public class Individual implements Serializable {
     public String getMaritalStatus() {
         return maritalStatus;
     }
-
-
-
-//    public OffsetDateTime getBirthDate() {
-//        System.out.println(birthDate);
-//        return birthDate;
-//    }
-
 
     public int getNacionality() {
         return nationality;

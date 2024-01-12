@@ -37,7 +37,7 @@
             <label>Marital Status</label>
             <br>
             <select th:field="*{maritalStatus}">
-                <option selected="selected" value="*{maritalStatus}">Single</option>
+                <option selected="selected" value="*{maritalStatus}"></option>
                 <option value="LivingTogether">LivingTogether</option>
                 <option value="Married">Married</option>
                 <option value="Divorced">Divorced</option>
@@ -58,13 +58,30 @@
                    class="form-control mb-4 w-25" placeholder="Number Of Dependents">
 
             <label>Divorce Legal Agreement</label>
-            <input type="text" th:field="*{divorceLegalAgreement}"
-                   class="form-control mb-4 w-25" placeholder="Divorce Legal Agreement">
+            <br>
+            <select th:field="*{divorceLegalAgreement}">
+                <option selected="selected" value="*{divorceLegalAgreement}"></option>
+                <option value="MaritalSociety">MaritalSociety</option>
+                <option value="AssetSeparation">AssetSeparation</option>
+                <option value="NA">NA</option>
+            </select>
+            <br>
+            <br>
 
             <label>Dwelling Type</label>
-            <input type="text" th:field="*{dwellingType}"
-                   class="form-control mb-4 w-25" placeholder="Dwelling Type">
+            <br>
+            <select th:field="*{dwellingType}">
+                <option selected="selected" value="*{dwellingType}"></option>
+                <option value="Owned">Owned</option>
+                <option value="FamiliarLoan">FamiliarLoan</option>
+                <option value="Familiar">Familiar</option>
+                <option value="Rented">Rented</option>
+                <option value="OwnedWithMortgage">OwnedWithMortgage</option>
+                <option value="NotApplies">NotApplies</option>
 
+            </select>
+            <br>
+            <br>
             <label>Is Dwelling Free Of Encumbrance</label>
             <input type="text" th:field="*{isDwellingFreeOfEncumbrance}"
                    class="form-control mb-4 w-25" placeholder="Is Dwelling Free Of Encumbrance">
@@ -92,18 +109,32 @@
                    class="form-control mb-4 w-25" placeholder="Does Biz Activities">
 
             <label>Hiring Type</label>
-            <input type="text" th:field="*{hiringType}"
-                   class="form-control mb-4 w-25" placeholder="Hiring Type">
+            <br>
+            <select th:field="*{hiringType}">
+                <option selected="selected" value="*{hiringType}"></option>
+                <option value="NormalPayroll">NormalPayroll</option>
+                <option value="ConfidentialPayroll">ConfidentialPayroll</option>
+                <option value="Unknown">Unknown</option>
+                <option value="ProfessionalServices">ProfessionalServices</option>
+            </select>
+            <br>
+            <br>
 
             <label>External Employee Number</label>
             <input type="text" th:field="*{externalEmployeeNumber}"
                    class="form-control mb-4 w-25" placeholder="External Employee Number">
 
             <label>Gender</label>
-            <input type="text" th:field="*{gender}"
-                   class="form-control mb-4 w-25" placeholder="Gender">
-
-
+            <br>
+            <select th:field="*{gender}">
+                <option selected="selected" value="*{gender}"></option>
+                <option value="GenderMale">GenderMale</option>
+                <option value="GenderFemale">GenderFemale</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <br>
+            <br>
 <!--            Favorite Operating Systems:-->
 
 <!--                <input type="checkbox" th:field="*{gender}" th:value="Linux" >Linux</input>-->
