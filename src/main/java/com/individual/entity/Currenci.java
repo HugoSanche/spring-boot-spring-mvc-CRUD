@@ -25,8 +25,8 @@ import jakarta.persistence.*;
         private String symbol;
 
         
-        @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
-        private  Individual individual;
+      //  @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
+     //   private  Individual individual;
 
 //        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
 //        private  Countries countries;
@@ -101,13 +101,13 @@ import jakarta.persistence.*;
             this.symbol = symbol;
         }
 
-    public Individual getIndividual() {
-        return individual;
-    }
-
-    public void setIndividual(Individual individual) {
-        this.individual = individual;
-    }
+//    public Individual getIndividual() {
+//        return individual;
+//    }
+//
+//    public void setIndividual(Individual individual) {
+//        this.individual = individual;
+//    }
 
     @Override
         public String toString() {

@@ -45,7 +45,7 @@ public class ApiIndividualsApplication {
 
 		System.out.println("The Currency "+theCurrenci);
 
-		System.out.println("The individual "+theCurrenci.getIndividual());
+		//System.out.println("The individual "+theCurrenci.getIndividual());
 
 		System.out.println("!Done");
 	}
@@ -66,7 +66,7 @@ public class ApiIndividualsApplication {
 		//get individual
 		Individual tempIndividual= individualDAO.findIndividualById(theId);
 		System.out.println("tempIndividual "+tempIndividual);
-		System.out.println("the associated individual Currency "+tempIndividual.getCurrency());
+		//System.out.println("the associated individual Currency "+tempIndividual.getCurrency());
 		System.out.println("The associated individual Country "+tempIndividual.getCountries());
 
 	}

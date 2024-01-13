@@ -73,9 +73,12 @@ public class Individual implements Serializable {
     @Column(name="Gender")
     private String gender;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="CurrencyId")
-    private Currenci currency;
+//    @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+//    @JoinColumn(name="CurrencyId")
+//    private Currenci currency;
+
+    @Column(name="CurrencyId")
+    private Integer currencyId;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
    // @PrimaryKeyJoinColumn(name="BirthCountryId")
@@ -92,7 +95,10 @@ public class Individual implements Serializable {
 
 
 
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber, String gender, Currenci currency, Countries country) {
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality,
+                      int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation,
+                      Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType,
+                      String externalEmployeeNumber, String gender, int currencyId, Countries country) {
         this.personId = personId;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -113,12 +119,14 @@ public class Individual implements Serializable {
         this.hiringType = hiringType;
         this.externalEmployeeNumber = externalEmployeeNumber;
         this.gender = gender;
-        this.currency = currency;
-
+      // this.currency = currency;
+      this.currencyId=currencyId;
     }
 
     public Individual() {
     }
+
+
 
     public int getPersonId() {
         return personId;
@@ -203,9 +211,7 @@ public class Individual implements Serializable {
         return nationality;
     }
 
-    public Currenci getCurrency() {
-        return currency;
-    }
+
 //    public Countries getCountry() {
 //        return country;
 //    }
@@ -297,9 +303,13 @@ public class Individual implements Serializable {
         this.nationality = nationality;
     }
 
-    public void setCurrency(Currenci currency) {
-        this.currency = currency;
-    }
+//    public Currenci getCurrency() {
+//        return currency;
+//    }
+//
+//    public void setCurrency(Currenci currency) {
+//        this.currency = currency;
+//    }
 
     public Countries getCountries() {
         return countries;
@@ -317,7 +327,13 @@ public class Individual implements Serializable {
         this.birthDate = birthDate;
     }
 
+    public int getCurrencyId() {
+        return currencyId;
+    }
 
+    public void setCurrencyId(int currencyId) {
+        this.currencyId = currencyId;
+    }
 
     //    public void setCountry(Countries country) {
 //        this.country = country;

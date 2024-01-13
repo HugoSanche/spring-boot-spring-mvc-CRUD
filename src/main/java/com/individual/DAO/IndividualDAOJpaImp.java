@@ -64,7 +64,7 @@ public class IndividualDAOJpaImp implements IndividualDAO{
         //find Individual by id
         Individual theIndividual=entityManager.find(Individual.class,theId);
 
-       theIndividual.setCurrency(null);
+      // theIndividual.setCurrency(null);
        entityManager.merge(theIndividual);
         System.out.println("Delete individual by Id "+theIndividual);
         entityManager.remove(theIndividual);
