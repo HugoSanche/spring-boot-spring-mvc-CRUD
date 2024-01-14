@@ -1,6 +1,7 @@
 package com.individual.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -60,6 +61,7 @@ public class Individual implements Serializable {
     @Column(name="CurrentPositionName")
     private String currentPositionName;
 
+    @DecimalMin("0.01")
     @Column(name="CurrentMonthlyIncome")
     private BigDecimal currentMonthlyIncome;
 
@@ -278,10 +280,10 @@ public class Individual implements Serializable {
     public void setCurrentPositionName(String currentPositionName) {
         this.currentPositionName = currentPositionName;
     }
-
     public void setCurrentMonthlyIncome(BigDecimal currentMonthlyIncome) {
-        currentMonthlyIncome = currentMonthlyIncome;
+        this.currentMonthlyIncome = currentMonthlyIncome;
     }
+
 
     public void setDoesBizActivities(int doesBizActivities) {
         this.doesBizActivities = doesBizActivities;
@@ -327,11 +329,11 @@ public class Individual implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public int getCurrencyId() {
+    public Integer getCurrencyId() {
         return currencyId;
     }
 
-    public void setCurrencyId(int currencyId) {
+    public void setCurrencyId(Integer currencyId) {
         this.currencyId = currencyId;
     }
 

@@ -64,6 +64,7 @@ public class IndividualController {
     @PostMapping("/save")
     public String saveIndividual(@ModelAttribute("individual") Individual theIndividual){
 
+        System.out.println("getCurrentMonthlyIncome "+theIndividual.getCurrentMonthlyIncome());
         //save the individual
         individualService.save(theIndividual);
 

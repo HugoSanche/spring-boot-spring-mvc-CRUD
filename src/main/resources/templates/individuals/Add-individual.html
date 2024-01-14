@@ -103,20 +103,26 @@
             <input type="text" th:field="*{currentPositionName}"
                    class="form-control mb-4 w-25" placeholder="current Position Name">
 
+
+
             <label>current Monthly Income</label>
-            <input type="text" th:field="*{currentMonthlyIncome}"
-                   class="form-control mb-4 w-25" placeholder="current Monthly Income">
+<!--            <input type="number" th:text="${#numbers.formatDecimal(currentMonthlyIncome.value, 0, 'COMMA', 2, 'POINT')}"-->
+<!--                   class="form-control mb-4 w-25" placeholder="current Monthly Income">-->
+<!--            <span th:inline="text">$ [[${#numbers.formatDecimal(currentMonthlyIncome, 0, 'COMMA', 2, 'POINT')}]]</span>-->
+            <input type="number" step="any" th:field="*{currentMonthlyIncome}">
 
+            <br>
+            <br>
 
-<!--            <label>Currency</label>-->
-<!--            <br>-->
-<!--            <select th:field="*{currencyId}">-->
-<!--                <option selected="selected" value="1">Dollar</option>-->
-<!--                <option value="1">Dollar</option>-->
-<!--                <option value="2">Peso</option>-->
-<!--            </select>-->
-<!--            <br>-->
-<!--            <br>-->
+            <label>Currency</label>
+            <br>
+            <select th:field="*{currencyId}">
+                <option selected="selected" value="1">Dollar</option>
+                <option value="1">Dollar</option>
+                <option value="2">Peso</option>
+            </select>
+            <br>
+            <br>
 
 
             <label>Does Biz Activities</label>
