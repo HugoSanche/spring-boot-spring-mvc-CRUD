@@ -51,12 +51,20 @@ public class IndividualController {
         // set employee in the model to prepulate the form
         theModel.addAttribute("individual", theIndividual);
 
-        String listMaritalStatus= theIndividual.getMaritalStatus();
+        //String listMaritalStatus= theIndividual.getMaritalStatus();
         //List<String> listMaritalStatus= Arrays.asList("Widowed", "Unknown", "Single", "Married", "LivingTogether", "Divorced");
+
+        //List<Integer> listCurrency= Arrays.asList()
+
+
+        String currencyId=String.valueOf(theIndividual.getCurrencyId());
 
         System.out.println("The Individual "+theIndividual);
         System.out.println("Marital Status "+theIndividual.getMaritalStatus());
-        theModel.addAttribute("listMaritalStatus",listMaritalStatus);
+
+//        System.out.println("TEST "+theIndividual.getCurrencyId());
+//        System.out.println("Currency "+currencyId);
+//        theModel.addAttribute("currency",currencyId);
         //send over to our form
         return "individuals/Update-individual";
     }

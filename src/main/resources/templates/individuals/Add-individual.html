@@ -99,17 +99,19 @@
             <input type="date" th:field="*{startDateInCurrentJob}"
                    class="form-control mb-4 w-25" placeholder="start Date In Current Job">
 
-            <label>current Position Name</label>
+            <label>Current Position Name</label>
             <input type="text" th:field="*{currentPositionName}"
                    class="form-control mb-4 w-25" placeholder="current Position Name">
 
 
 
-            <label>current Monthly Income</label>
+            <label>Current Monthly Income</label>
 <!--            <input type="number" th:text="${#numbers.formatDecimal(currentMonthlyIncome.value, 0, 'COMMA', 2, 'POINT')}"-->
 <!--                   class="form-control mb-4 w-25" placeholder="current Monthly Income">-->
 <!--            <span th:inline="text">$ [[${#numbers.formatDecimal(currentMonthlyIncome, 0, 'COMMA', 2, 'POINT')}]]</span>-->
-            <input type="number" step="any" th:field="*{currentMonthlyIncome}">
+            <input type="number"   th:field="*{currentMonthlyIncome}"
+                   th:text="${#numbers.formatInteger(num,5)}"
+                   class="form-control mb-4 w-25" placeholder="CurrentMonthlyIncome">
 
             <br>
             <br>

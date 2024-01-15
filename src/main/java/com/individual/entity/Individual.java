@@ -3,6 +3,7 @@ package com.individual.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -61,6 +62,7 @@ public class Individual implements Serializable {
     @Column(name="CurrentPositionName")
     private String currentPositionName;
 
+    @NumberFormat(style= NumberFormat.Style.CURRENCY)
     @DecimalMin("0.01")
     @Column(name="CurrentMonthlyIncome")
     private BigDecimal currentMonthlyIncome;

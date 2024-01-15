@@ -105,15 +105,18 @@
                    class="form-control mb-4 w-25" placeholder="current Monthly Income">
 
 
+
+
             <label>Currency</label>
             <br>
             <select th:field="*{currencyId}">
-                <option selected="selected" value="*{currencyId}"></option>
-                <option value="1">Dollar</option>
-                <option value="2">Peso</option>
+                <option selected="selected" th:value="${individual.currencyId}"></option>
+                <option th:value="1" >Dollar</option>
+                <option th:value="2" >Peso</option>
             </select>
             <br>
             <br>
+            
 
             <label>Does Biz Activities</label>
             <input type="text" th:field="*{doesBizActivities}"
