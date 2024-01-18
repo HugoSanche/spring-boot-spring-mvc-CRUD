@@ -38,6 +38,7 @@
             <br>
             <select th:field="*{maritalStatus}">
                 <option selected="selected" value="*{maritalStatus}"></option>
+                <option value="Single">Single</option>
                 <option value="LivingTogether">LivingTogether</option>
                 <option value="Married">Married</option>
                 <option value="Divorced">Divorced</option>
@@ -46,8 +47,8 @@
             </select>
             <br>
             <br>
-<!--            <input type="text" th:field="*{birthDate}"-->
-<!--                   class="form-control mb-4 w-25" placeholder="Birth Date">-->
+            <input type="date" th:field="*{birthDate}"
+                   class="form-control mb-4 w-25" placeholder="Birth Date">
 
             <label>Nationality</label>
             <input type="text" th:field="*{nacionality}"
@@ -110,13 +111,13 @@
             <label>Currency</label>
             <br>
             <select th:field="*{currencyId}">
-                <option selected="selected" th:value="${individual.currencyId}"></option>
+                <option selected="selected" th:value="*{currencyId}"></option>
                 <option th:value="1" >Dollar</option>
                 <option th:value="2" >Peso</option>
             </select>
             <br>
             <br>
-            
+
 
             <label>Does Biz Activities</label>
             <input type="text" th:field="*{doesBizActivities}"

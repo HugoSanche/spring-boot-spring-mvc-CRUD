@@ -34,7 +34,8 @@ public class Individual implements Serializable {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @Column(name="BirthDate")
 //    OffsetDateTime birthDate;
-    @Column(name = "BirthDate", nullable = false, updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "BirthDate", nullable = false)
     private Date birthDate;
 
     @Column(name="Nacionality")
@@ -90,25 +91,44 @@ public class Individual implements Serializable {
     //  @Column(name="BirthCountryId")
     private Countries countries;
 
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "LastUpdate")
+    private Date lastUpdate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "Register")
+    private Date register;
+
     @PrePersist
     protected void prePersist() {
         if (this.birthDate == null) birthDate = new Date();
+        if (this.lastUpdate == null) lastUpdate = new Date();
+        if(this.register==null) register=new Date();
 
+    }
+    @PostPersist
+    protected  void postPersist(){
+        lastUpdate=new Date();
     }
 
 
 
-
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus, int nationality,
-                      int numberOfDependents, String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation,
-                      Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType,
-                      String externalEmployeeNumber, String gender, int currencyId, Countries country) {
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus
+                      ,Date birthDate,
+                      int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType,
+                      int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName,
+                      BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber,
+                      String gender, int currencyId, Countries country
+            /*, Date lastUpdate,Date register*/
+    ) {
         this.personId = personId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.maritalStatus = maritalStatus;
+        this.birthDate=birthDate;
      //  BirthCountryId = birthCountryId;
         this.nationality = nationality;
         this.numberOfDependents = numberOfDependents;
@@ -125,12 +145,28 @@ public class Individual implements Serializable {
         this.gender = gender;
       // this.currency = currency;
       this.currencyId=currencyId;
+    //this.lastUpdate=lastUpdate;
+      //  this.register=register;
     }
 
     public Individual() {
     }
 
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
 
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Date getRegister() {
+        return register;
+    }
+
+    public void setRegister(Date register) {
+        this.register = register;
+    }
 
     public int getPersonId() {
         return personId;
