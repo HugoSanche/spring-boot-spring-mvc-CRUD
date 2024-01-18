@@ -96,20 +96,26 @@ public class Individual implements Serializable {
     @Column(name = "LastUpdate")
     private Date lastUpdate;
 
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "Register")
     private Date register;
 
-    @PrePersist
-    protected void prePersist() {
-        if (this.birthDate == null) birthDate = new Date();
-        if (this.lastUpdate == null) lastUpdate = new Date();
-        if(this.register==null) register=new Date();
 
+
+    @PreUpdate
+    protected void prePersist() {
+        //if (this.birthDate == null) birthDate = new Date();
+        lastUpdate = new Date();
+        if(this.register==null) register=new Date();
+        System.out.println("Last Updated "+lastUpdate);
     }
+
+
     @PostPersist
     protected  void postPersist(){
         lastUpdate=new Date();
+        register=new Date();
     }
 
 
@@ -120,7 +126,7 @@ public class Individual implements Serializable {
                       int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName,
                       BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber,
                       String gender, int currencyId, Countries country
-            /*, Date lastUpdate,Date register*/
+            , Date lastUpdate,Date register
     ) {
         this.personId = personId;
         this.firstName = firstName;
@@ -145,8 +151,8 @@ public class Individual implements Serializable {
         this.gender = gender;
       // this.currency = currency;
       this.currencyId=currencyId;
-    //this.lastUpdate=lastUpdate;
-      //  this.register=register;
+    this.lastUpdate=lastUpdate;
+        this.register=register;
     }
 
     public Individual() {

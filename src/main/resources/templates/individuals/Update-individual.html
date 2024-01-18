@@ -141,6 +141,7 @@
 
             <label>Gender</label>
             <br>
+
             <select th:field="*{gender}">
                 <option selected="selected" value="*{gender}"></option>
                 <option value="GenderMale">GenderMale</option>
@@ -150,11 +151,23 @@
             </select>
             <br>
             <br>
-<!--            Favorite Operating Systems:-->
+            <div class="mb-3 row">
+                <label  class="col-sm-2 col-form-label">Last Update</label>
+                <div class="col-sm-10">
+                    <input type="date" th:field="*{lastUpdate}"
+                           class="form-control-plaintext"
+                           th:attr="name='lastUpdate'" readonly="readonly">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label  class="col-sm-2 col-form-label">Register</label>
+                <div class="col-sm-10">
+                    <input type="date" th:field="${individual.register}"
+                           class="form-control-plaintext"
+                           th:attr="name='register'" readonly="readonly">
+                </div>
+            </div>
 
-<!--                <input type="checkbox" th:field="*{gender}" th:value="Linux" >Linux</input>-->
-<!--                <input type="checkbox" th:field="*{gender}" th:value="MacOs" >MAcOs</input>-->
-<!--                <input type="checkbox" th:field="*{gender}" th:value="'Microsoft Windows'" >Microsoft Windows</input>-->
 
             <button type="submit" class="btn btn-info col-2">Update</button>
 
