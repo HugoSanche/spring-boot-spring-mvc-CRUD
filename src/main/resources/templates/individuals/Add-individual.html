@@ -51,9 +51,9 @@
             <input type="date" th:field="*{birthDate}"
                    class="form-control mb-4 w-25" placeholder="Birth Date">
 
-            <label>Nationality</label>
-            <input type="text" th:field="*{nacionality}"
-                   class="form-control mb-4 w-25" placeholder="Nationality">
+<!--            <label>Nationality</label>-->
+<!--            <input type="text" th:field="*{nacionality}"-->
+<!--                   class="form-control mb-4 w-25" placeholder="Nationality">-->
 
             <label>Number Of Dependents</label>
             <input type="text" th:field="*{numberOfDependents}"
@@ -117,11 +117,22 @@
 
             <label>Currency</label>
             <br>
+<!--            <select th:field="*{currencyId}">-->
+<!--                <option selected="selected" value="1">Dollar</option>-->
+<!--                <option value="1">Dollar</option>-->
+<!--                <option value="2">Peso</option>-->
+<!--            </select>-->
             <select th:field="*{currencyId}">
-                <option selected="selected" value="1">Dollar</option>
-                <option value="1">Dollar</option>
-                <option value="2">Peso</option>
+                <option th:each="i : ${currenci2}" th:value="${i}" th:text="${i}"
+                        th:selected="${i==2}"></option>
             </select>
+
+
+<!--            <table>-->
+<!--                <tr th:each="friend : ${currenci}"> // add friend-->
+<!--                    <td th:text="${friend.name}"></td>-->
+<!--                </tr>-->
+<!--            </table>-->
             <br>
             <br>
 

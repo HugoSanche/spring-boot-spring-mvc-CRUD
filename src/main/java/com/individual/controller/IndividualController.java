@@ -25,6 +25,8 @@ public class IndividualController {
         //get the individuals from db
         List<Individual> theIndividual=individualService.findAll();
 
+
+
         //add to the spring model
         theModel.addAttribute("individuals",theIndividual);
 
@@ -35,6 +37,7 @@ public class IndividualController {
 
         // create model attribute to bind form data
         Individual theEmployee =new Individual();
+      //  Currenci currenci =new Currenci();
 
 
         theModel.addAttribute("individual",theEmployee);
@@ -57,9 +60,9 @@ public class IndividualController {
         //List<Integer> listCurrency= Arrays.asList()
 
 
-        String currencyId=String.valueOf(theIndividual.getCurrencyId());
+       // String currencyId=String.valueOf(theIndividual.getCurrencyId());
 
-        System.out.println("The Individual "+theIndividual);
+      //  System.out.println("The Individual "+theIndividual.getCurrenci2());
         System.out.println("Marital Status "+theIndividual.getMaritalStatus());
 
 //        System.out.println("TEST "+theIndividual.getCurrencyId());

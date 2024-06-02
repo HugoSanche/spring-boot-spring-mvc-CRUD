@@ -2,10 +2,12 @@ package com.individual.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 
 @Entity
     @Table(name="currencies")
-    public class Currenci {
+    public class Currenci implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="currencyid")
@@ -25,8 +27,9 @@ import jakarta.persistence.*;
         private String symbol;
 
         
-      //  @OneToOne(mappedBy = "currency", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
-     //   private  Individual individual;
+        @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+        @JoinColumn(name = "currencyId")
+        private  Individual individual;
 
 //        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
 //        private  Countries countries;
@@ -75,6 +78,11 @@ import jakarta.persistence.*;
         public String getSymbol() {
             return symbol;
         }
+//        public List<Currenci> getDetailCurrencies(){
+//            List<String> list=new ArrayList<>();
+//           // list.add()
+//            return  list;
+//        }
 
 
         public void setCurrencyId(int currencyId) {

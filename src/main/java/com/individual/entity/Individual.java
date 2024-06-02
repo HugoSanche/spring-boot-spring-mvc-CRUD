@@ -8,7 +8,7 @@ import org.springframework.format.annotation.NumberFormat;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
+import java.util.List;
 
 
 @Entity
@@ -83,7 +83,12 @@ public class Individual implements Serializable {
 //    private Currenci currency;
 
     @Column(name="CurrencyId")
-    private Integer currencyId;
+   private Integer currencyId;
+
+    // @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @OneToMany(mappedBy = "individual",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    private List<Currenci> currenci2;
+
 
     @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
    // @PrimaryKeyJoinColumn(name="BirthCountryId")
@@ -118,24 +123,20 @@ public class Individual implements Serializable {
         register=new Date();
     }
 
-
-
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String maritalStatus
-                      ,Date birthDate,
-                      int nationality, int numberOfDependents, String divorceLegalAgreement, String dwellingType,
-                      int isDwellingFreeOfEncumbrance, String occupation, Date startDateInCurrentJob, String currentPositionName,
-                      BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType, String externalEmployeeNumber,
-                      String gender, int currencyId, Countries country
-            , Date lastUpdate,Date register
-    ) {
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName,
+                      String maritalStatus, Date birthDate, int nationality, int numberOfDependents,
+                      String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance,
+                      String occupation, Date startDateInCurrentJob, String currentPositionName,
+                      BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType,
+                      String externalEmployeeNumber, String gender, Integer currencyId, List<Currenci> currenci2, Countries countries,
+                      Date lastUpdate, Date register) {
         this.personId = personId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.maritalStatus = maritalStatus;
-        this.birthDate=birthDate;
-     //  BirthCountryId = birthCountryId;
+        this.birthDate = birthDate;
         this.nationality = nationality;
         this.numberOfDependents = numberOfDependents;
         this.divorceLegalAgreement = divorceLegalAgreement;
@@ -149,13 +150,198 @@ public class Individual implements Serializable {
         this.hiringType = hiringType;
         this.externalEmployeeNumber = externalEmployeeNumber;
         this.gender = gender;
-      // this.currency = currency;
-      this.currencyId=currencyId;
-    this.lastUpdate=lastUpdate;
-        this.register=register;
+        this.currencyId = currencyId ;
+        this.currenci2 = currenci2;
+        this.countries = countries;
+        this.lastUpdate = lastUpdate;
+        this.register = register;
     }
 
     public Individual() {
+    }
+
+    public Integer getCurrencyId() {
+        return currencyId;
+    }
+
+    public void setCurrencyId(Integer currencyId) {
+        this.currencyId = currencyId;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getFirstLastName() {
+        return firstLastName;
+    }
+
+    public void setFirstLastName(String firstLastName) {
+        this.firstLastName = firstLastName;
+    }
+
+    public String getSecondLastName() {
+        return secondLastName;
+    }
+
+    public void setSecondLastName(String secondLastName) {
+        this.secondLastName = secondLastName;
+    }
+
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public int getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(Integer nationality) {
+        this.nationality = nationality;
+    }
+
+    public int getNumberOfDependents() {
+        return numberOfDependents;
+    }
+
+    public void setNumberOfDependents(int numberOfDependents) {
+        this.numberOfDependents = numberOfDependents;
+    }
+
+    public String getDivorceLegalAgreement() {
+        return divorceLegalAgreement;
+    }
+
+    public void setDivorceLegalAgreement(String divorceLegalAgreement) {
+        this.divorceLegalAgreement = divorceLegalAgreement;
+    }
+
+    public String getDwellingType() {
+        return dwellingType;
+    }
+
+    public void setDwellingType(String dwellingType) {
+        this.dwellingType = dwellingType;
+    }
+
+    public int getIsDwellingFreeOfEncumbrance() {
+        return isDwellingFreeOfEncumbrance;
+    }
+
+    public void setIsDwellingFreeOfEncumbrance(int isDwellingFreeOfEncumbrance) {
+        this.isDwellingFreeOfEncumbrance = isDwellingFreeOfEncumbrance;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public Date getStartDateInCurrentJob() {
+        return startDateInCurrentJob;
+    }
+
+    public void setStartDateInCurrentJob(Date startDateInCurrentJob) {
+        this.startDateInCurrentJob = startDateInCurrentJob;
+    }
+
+    public String getCurrentPositionName() {
+        return currentPositionName;
+    }
+
+    public void setCurrentPositionName(String currentPositionName) {
+        this.currentPositionName = currentPositionName;
+    }
+
+    public BigDecimal getCurrentMonthlyIncome() {
+        return currentMonthlyIncome;
+    }
+
+    public void setCurrentMonthlyIncome(BigDecimal currentMonthlyIncome) {
+        this.currentMonthlyIncome = currentMonthlyIncome;
+    }
+
+    public int getDoesBizActivities() {
+        return doesBizActivities;
+    }
+
+    public void setDoesBizActivities(int doesBizActivities) {
+        this.doesBizActivities = doesBizActivities;
+    }
+
+    public String getHiringType() {
+        return hiringType;
+    }
+
+    public void setHiringType(String hiringType) {
+        this.hiringType = hiringType;
+    }
+
+    public String getExternalEmployeeNumber() {
+        return externalEmployeeNumber;
+    }
+
+    public void setExternalEmployeeNumber(String externalEmployeeNumber) {
+        this.externalEmployeeNumber = externalEmployeeNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public List<Currenci> getCurrenci2() {
+        return currenci2;
+    }
+
+    public void setCurrenci2(List<Currenci> currenci2) {
+        this.currenci2 = currenci2;
+    }
+
+    public Countries getCountries() {
+        return countries;
+    }
+
+    public void setCountries(Countries countries) {
+        this.countries = countries;
     }
 
     public Date getLastUpdate() {
@@ -174,216 +360,6 @@ public class Individual implements Serializable {
         this.register = register;
     }
 
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public String getFirstLastName() {
-        return firstLastName;
-    }
-
-    public String getSecondLastName() {
-        return secondLastName;
-    }
-
-    public String getMaritalStatus() {
-        return maritalStatus;
-    }
-
-    public int getNacionality() {
-        return nationality;
-    }
-
-    public int getNumberOfDependents() {
-        return numberOfDependents;
-    }
-
-    public String getDivorceLegalAgreement() {
-        return divorceLegalAgreement;
-    }
-
-    public String getDwellingType() {
-        return dwellingType;
-    }
-
-    public int getIsDwellingFreeOfEncumbrance() {
-        return isDwellingFreeOfEncumbrance;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public Date getStartDateInCurrentJob() {
-        return startDateInCurrentJob;
-    }
-
-    public String getCurrentPositionName() {
-        return currentPositionName;
-    }
-
-    public BigDecimal getCurrentMonthlyIncome() {
-        return currentMonthlyIncome;
-    }
-
-    public int getDoesBizActivities() {
-        return doesBizActivities;
-    }
-
-    public String getHiringType() {
-        return hiringType;
-    }
-
-    public String getExternalEmployeeNumber() {
-        return externalEmployeeNumber;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-    public int getNationality() {
-        return nationality;
-    }
-
-
-//    public Countries getCountry() {
-//        return country;
-//    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-        System.out.println("First Name : "+this.firstName);
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public void setFirstLastName(String firstLastName) {
-        this.firstLastName = firstLastName;
-    }
-
-    public void setSecondLastName(String secondLastName) {
-        this.secondLastName = secondLastName;
-    }
-
-    public void setMaritalStatus(String maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-//    public void setBirthDate(OffsetDateTime birthDate)  {
-//        System.out.println(birthDate);
-//        this.birthDate = birthDate;
-//    }
-
-    public void setNacionality(int nacionality) {
-        this.nationality = nacionality;
-    }
-
-    public void setNumberOfDependents(int numberOfDependents) {
-        this.numberOfDependents = numberOfDependents;
-    }
-
-    public void setDivorceLegalAgreement(String divorceLegalAgreement) {
-        this.divorceLegalAgreement = divorceLegalAgreement;
-    }
-
-    public void setDwellingType(String dwellingType) {
-        this.dwellingType = dwellingType;
-    }
-
-    public void setIsDwellingFreeOfEncumbrance(int isDwellingFreeOfEncumbrance) {
-        this.isDwellingFreeOfEncumbrance = isDwellingFreeOfEncumbrance;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-//    public void setStartDateInCurrentJob(Date startDateInCurrentJob) throws ParseException {
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("dd/MM/yyyy");
-//
-//        this.startDateInCurrentJob = simpleDateFormat.parse(String.valueOf(startDateInCurrentJob));
-//    }
-
-    public void setStartDateInCurrentJob(Date startDateInCurrentJob) {
-        this.startDateInCurrentJob = startDateInCurrentJob;
-    }
-
-    public void setCurrentPositionName(String currentPositionName) {
-        this.currentPositionName = currentPositionName;
-    }
-    public void setCurrentMonthlyIncome(BigDecimal currentMonthlyIncome) {
-        this.currentMonthlyIncome = currentMonthlyIncome;
-    }
-
-
-    public void setDoesBizActivities(int doesBizActivities) {
-        this.doesBizActivities = doesBizActivities;
-    }
-
-    public void setHiringType(String hiringType) {
-        this.hiringType = hiringType;
-    }
-
-    public void setExternalEmployeeNumber(String externalEmployeeNumber) {
-        this.externalEmployeeNumber = externalEmployeeNumber;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setNationality(int nationality) {
-        this.nationality = nationality;
-    }
-
-//    public Currenci getCurrency() {
-//        return currency;
-//    }
-//
-//    public void setCurrency(Currenci currency) {
-//        this.currency = currency;
-//    }
-
-    public Countries getCountries() {
-        return countries;
-    }
-
-    public void setCountries(Countries countries) {
-        this.countries = countries;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Integer getCurrencyId() {
-        return currencyId;
-    }
-
-    public void setCurrencyId(Integer currencyId) {
-        this.currencyId = currencyId;
-    }
-
-    //    public void setCountry(Countries country) {
-//        this.country = country;
-//    }
     @Override
     public String toString() {
         return "Individual{" +
@@ -393,6 +369,7 @@ public class Individual implements Serializable {
                 ", firstLastName='" + firstLastName + '\'' +
                 ", secondLastName='" + secondLastName + '\'' +
                 ", maritalStatus='" + maritalStatus + '\'' +
+
                 //", birthDate=" + birthDate +
                 ", nacionality='" + nationality + '\'' +
                 ", numberOfDependents=" + numberOfDependents +
@@ -407,6 +384,8 @@ public class Individual implements Serializable {
                 ", hiringType='" + hiringType + '\'' +
                 ", externalEmployeeNumber='" + externalEmployeeNumber + '\'' +
                 ", gender='" + gender + '\'' +
+
+                ",currenci2='"+currenci2+'\''+
                 '}';
     }
 }
