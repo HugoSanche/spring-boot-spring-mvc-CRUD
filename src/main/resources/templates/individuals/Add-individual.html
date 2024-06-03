@@ -34,6 +34,15 @@
             <input type="text" th:field="*{secondLastName}"
                    class="form-control mb-4 w-25" placeholder="Second Last Name">
 
+            <label>Email</label>
+            <input type="text" th:field="*{email}"
+                   class="form-control mb-4 w-25" placeholder="Email">
+
+            <label>Phone Number</label>
+            <input type="text" th:field="*{phoneNumber}"
+                   class="form-control mb-4 w-25" placeholder="Phone Number, 10 digits">
+
+
             <label>Marital Status</label>
             <br>
             <select th:field="*{maritalStatus}">
@@ -123,8 +132,11 @@
 <!--                <option value="2">Peso</option>-->
 <!--            </select>-->
             <select th:field="*{currencyId}">
-                <option th:each="i : ${currenci2}" th:value="${i}" th:text="${i}"
-                        th:selected="${i==2}"></option>
+                <option th:each="i : ${currencies}"
+                        th:value="${i.currencyId}"  th:text="${i.name}"
+                        th:selected="${i==2}">
+
+                </option>
             </select>
 
 

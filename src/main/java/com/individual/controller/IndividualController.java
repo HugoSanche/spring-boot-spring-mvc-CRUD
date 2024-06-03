@@ -1,7 +1,9 @@
 package com.individual.controller;
 
+import com.individual.entity.Currenci;
 import com.individual.entity.Individual;
 import com.individual.service.IndividualService;
+import com.individual.service.CurrenciService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,12 @@ import java.util.List;
 public class IndividualController {
     IndividualService individualService;
 
-    public IndividualController(IndividualService individualService) {
-        this.individualService = individualService;
-    }
+    CurrenciService currenciService;
 
+    public IndividualController(IndividualService individualService, CurrenciService currenciService) {
+        this.individualService = individualService;
+        this.currenciService = currenciService;
+    }
     //add mapping for list  individuals
 
     @GetMapping("/list")
@@ -24,7 +28,6 @@ public class IndividualController {
 
         //get the individuals from db
         List<Individual> theIndividual=individualService.findAll();
-
 
 
         //add to the spring model
@@ -37,8 +40,10 @@ public class IndividualController {
 
         // create model attribute to bind form data
         Individual theEmployee =new Individual();
-      //  Currenci currenci =new Currenci();
 
+        List<Currenci> currencies=currenciService.findAll();
+
+        theModel.addAttribute("currencies",currencies);
 
         theModel.addAttribute("individual",theEmployee);
 
@@ -50,6 +55,11 @@ public class IndividualController {
 
         //get the employee from the service
         Individual theIndividual=individualService.findById(theId);
+
+       List<Currenci> currencies=currenciService.findAll();
+      theModel.addAttribute("currencies",currencies);
+
+     System.out.println(currencies);
 
         // set employee in the model to prepulate the form
         theModel.addAttribute("individual", theIndividual);

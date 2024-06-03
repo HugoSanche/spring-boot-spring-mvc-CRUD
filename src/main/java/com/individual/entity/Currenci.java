@@ -10,26 +10,24 @@ import java.io.Serializable;
     public class Currenci implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name="currencyid")
+        @Column(name="CurrencyId")
         private  int currencyId;
 
-
-        @Column(name="name")
+        @Column(name="Name")
         private  String name;
 
-        @Column(name="abbreviation")
+        @Column(name="Abbreviation")
         private String abbreviation;
-        @Column(name="comments")
+        @Column(name="Comments")
         private String comments;
-        @Column(name="nameinplural")
+        @Column(name="NameInPlural")
         private String nameInPlural;
-        @Column(name="symbol")
+        @Column(name="Symbol")
         private String symbol;
 
-        
-        @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-        @JoinColumn(name = "currencyId")
-        private  Individual individual;
+//        @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+//        @JoinColumn(name = "currencyId")
+//        private  Individual individual;
 
 //        @OneToOne(mappedBy = "currency2", cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
 //        private  Countries countries;
@@ -78,11 +76,7 @@ import java.io.Serializable;
         public String getSymbol() {
             return symbol;
         }
-//        public List<Currenci> getDetailCurrencies(){
-//            List<String> list=new ArrayList<>();
-//           // list.add()
-//            return  list;
-//        }
+
 
 
         public void setCurrencyId(int currencyId) {
@@ -109,18 +103,12 @@ import java.io.Serializable;
             this.symbol = symbol;
         }
 
-//    public Individual getIndividual() {
-//        return individual;
-//    }
-//
-//    public void setIndividual(Individual individual) {
-//        this.individual = individual;
-//    }
+
 
     @Override
         public String toString() {
             return "Currenci{" +
-                    // "currencyId=" + currencyId +
+                     "currencyId=" + currencyId +
                     ", name='" + name + '\'' +
                     ", abbreviation='" + abbreviation + '\'' +
                     ", comments='" + comments + '\'' +

@@ -1,14 +1,13 @@
 package com.individual.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 
 @Entity
@@ -28,6 +27,18 @@ public class Individual implements Serializable {
     private String firstLastName;
     @Column(name="SecondLastName")
     private String secondLastName;
+
+
+    @NotNull
+    @Email
+    @Column(name="Email")
+    private String email;
+
+    @NotNull
+    @Pattern(regexp="(^$|[0-9]{10})")
+    @Size(min=10,max=10)
+    @Column(name="PhoneNumber")
+    private String phoneNumber;
     @Column(name="MaritalStatus")
     private String maritalStatus;
 
@@ -86,8 +97,8 @@ public class Individual implements Serializable {
    private Integer currencyId;
 
     // @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @OneToMany(mappedBy = "individual",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    private List<Currenci> currenci2;
+//    @OneToMany(mappedBy = "individual",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+//    private List<Currenci> currenci2;
 
 
     @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
@@ -123,18 +134,19 @@ public class Individual implements Serializable {
         register=new Date();
     }
 
-    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName,
-                      String maritalStatus, Date birthDate, int nationality, int numberOfDependents,
-                      String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance,
-                      String occupation, Date startDateInCurrentJob, String currentPositionName,
-                      BigDecimal currentMonthlyIncome, int doesBizActivities, String hiringType,
-                      String externalEmployeeNumber, String gender, Integer currencyId, List<Currenci> currenci2, Countries countries,
-                      Date lastUpdate, Date register) {
+    public Individual(int personId, String firstName, String middleName, String firstLastName, String secondLastName, String email,
+                      String phoneNumber, String maritalStatus, Date birthDate, int nationality, int numberOfDependents,
+                      String divorceLegalAgreement, String dwellingType, int isDwellingFreeOfEncumbrance, String occupation,
+                      Date startDateInCurrentJob, String currentPositionName, BigDecimal currentMonthlyIncome, int doesBizActivities,
+                      String hiringType, String externalEmployeeNumber,
+                      String gender, Integer currencyId, Countries countries, Date lastUpdate, Date register) {
         this.personId = personId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.maritalStatus = maritalStatus;
         this.birthDate = birthDate;
         this.nationality = nationality;
@@ -150,14 +162,33 @@ public class Individual implements Serializable {
         this.hiringType = hiringType;
         this.externalEmployeeNumber = externalEmployeeNumber;
         this.gender = gender;
-        this.currencyId = currencyId ;
-        this.currenci2 = currenci2;
+        this.currencyId = currencyId;
         this.countries = countries;
         this.lastUpdate = lastUpdate;
         this.register = register;
     }
 
     public Individual() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setNationality(int nationality) {
+        this.nationality = nationality;
     }
 
     public Integer getCurrencyId() {
@@ -328,13 +359,13 @@ public class Individual implements Serializable {
         this.gender = gender;
     }
 
-    public List<Currenci> getCurrenci2() {
-        return currenci2;
-    }
-
-    public void setCurrenci2(List<Currenci> currenci2) {
-        this.currenci2 = currenci2;
-    }
+//    public List<Currenci> getCurrenci2() {
+//        return currenci2;
+//    }
+//
+//    public void setCurrenci2(List<Currenci> currenci2) {
+//        this.currenci2 = currenci2;
+//    }
 
     public Countries getCountries() {
         return countries;
@@ -385,7 +416,7 @@ public class Individual implements Serializable {
                 ", externalEmployeeNumber='" + externalEmployeeNumber + '\'' +
                 ", gender='" + gender + '\'' +
 
-                ",currenci2='"+currenci2+'\''+
+               /* ",currenci2='"+currenci2+'\''+*/
                 '}';
     }
 }
