@@ -4,8 +4,10 @@ import com.individual.entity.Currenci;
 import com.individual.entity.Individual;
 import com.individual.service.IndividualService;
 import com.individual.service.CurrenciService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,27 +59,12 @@ public class IndividualController {
         Individual theIndividual=individualService.findById(theId);
 
        List<Currenci> currencies=currenciService.findAll();
-      theModel.addAttribute("currencies",currencies);
-
-     System.out.println(currencies);
+       theModel.addAttribute("currencies",currencies);
 
         // set employee in the model to prepulate the form
         theModel.addAttribute("individual", theIndividual);
 
-        //String listMaritalStatus= theIndividual.getMaritalStatus();
-        //List<String> listMaritalStatus= Arrays.asList("Widowed", "Unknown", "Single", "Married", "LivingTogether", "Divorced");
 
-        //List<Integer> listCurrency= Arrays.asList()
-
-
-       // String currencyId=String.valueOf(theIndividual.getCurrencyId());
-
-      //  System.out.println("The Individual "+theIndividual.getCurrenci2());
-        System.out.println("Marital Status "+theIndividual.getMaritalStatus());
-
-//        System.out.println("TEST "+theIndividual.getCurrencyId());
-//        System.out.println("Currency "+currencyId);
-//        theModel.addAttribute("currency",currencyId);
         //send over to our form
         return "individuals/Update-individual";
     }
@@ -93,13 +80,24 @@ public class IndividualController {
         return "redirect:/individuals/list";
     }
     @PostMapping("/update")
-    public String updateIndividual(@ModelAttribute("individual") Individual theIndividual){
+    public String updateIndividual(@Valid @ModelAttribute("individual") Individual theIndividual,
+                                   BindingResult theBindingResult){
 
-        //save the individual
-        individualService.update(theIndividual);
+    //    @{/individuals/showFormForUpdate(theIndividual.personId})
+        //Validate if exists errors in thymeleaf
 
-        // use a redirect to prevent duplicate submissions
-        return "redirect:/individuals/list";
+        //showFormForUpdate?individualId=3871
+        //showFormForUpdate?page=3871
+        //showFormForUpdate?individualId=3871
+        if (theBindingResult.hasErrors()){
+            return "individuals/showFormForUpdate?individualId=" + theIndividual.personId;
+        }else{
+            //save the individual
+            individualService.update(theIndividual);
+            // use a redirect to prevent duplicate submissions
+            return "redirect:/individuals/list";
+        }
+
     }
 
 

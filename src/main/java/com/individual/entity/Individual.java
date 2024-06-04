@@ -18,6 +18,8 @@ public class Individual implements Serializable {
     @Column(name="PersonId")
    public int personId;
 
+    @NotNull(message = "is required")
+    @Size (min =1, message = "is required")
     @Column(name="FirstName")
     private String firstName;
 
@@ -30,11 +32,13 @@ public class Individual implements Serializable {
 
 
     @NotNull
+    @NotEmpty
     @Email
     @Column(name="Email")
     private String email;
 
     @NotNull
+    @NotEmpty
     @Pattern(regexp="(^$|[0-9]{10})")
     @Size(min=10,max=10)
     @Column(name="PhoneNumber")
