@@ -15,28 +15,64 @@
 </head>
 <body>
     <div class="container">
-        <h3>Individual Directory</h3>
         <hr>
         <p class="h4 mb-4">Update Individual</p>
         <form action="#" th:action="@{/individuals/update}"
-                        th:object="${individual}" method="POST">
+                        th:object="${individual}" method="POST" class="row g-3">
+
+            <div class="col-md-4">
+                <label >First name</label>
+                <input type="text" th:field="*{firstName}"  class="form-control"  placeholder="First name"  >
+                <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">
+                </span>
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationDefault02" class="form-label">Middle Name</label>
+                <input type="text" th:field="*{middleName}" class="form-control" id="validationDefault02" value="Otto" required>
+                <span  th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" class="error">
+                            </span>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault03" class="form-label">Last name</label>
+                <input type="text" th:field="*{secondLastName}" class="form-control" id="validationDefault03" value="Otto" required>
+                <span  th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{secondLastName}" class="error">
+                            </span>
+            </div>
+
+
+<!--                <div class="form-row">-->
+<!--                    <div class="col-md-4 mb-3">-->
+<!--&lt;!&ndash;                        <label >First name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="text" th:field="*{firstName}" class="form-control"  placeholder="First name" >&ndash;&gt;-->
+
+<!--&lt;!&ndash;                             <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">&ndash;&gt;-->
+<!--&lt;!&ndash;                            </span>&ndash;&gt;-->
+
+<!--                    </div>-->
+<!--                    <div class="col-md-4 mb-3">-->
+<!--                        <label >Middle Name</label>-->
+<!--                        <input type="text" th:field="*{middleName}" class="form-control"  placeholder="Last name" >-->
+<!--                             <span  th:if="${#fields.hasErrors('middleName')}" th:errors="*{firstName}" class="error">-->
+<!--                            </span>-->
+<!--                    </div>-->
+<!--                    <div class="col-md-4 mb-3">-->
+<!--                        <label >First Last Name</label>-->
+<!--                        <input type="text" th:field="*{secondLastName}" class="form-control"  placeholder="Last name" >-->
+<!--                        <div class="valid-feedback">-->
+<!--                             <span  th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{firstName}" class="error">-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+
 
             <!-- Add hidden form filed to handle the update-->
             <input type="hidden" th:field="*{personId}">
 
-            <label>First Name</label>
-            <input type="text" th:field="*{firstName}" class="form-control mb-4 w-25" placeholder="First Name"/>
-            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">
-            </span>
             <br>
-            <br>
-            <label>Middle Name</label>
-            <input type="text" th:field="*{middleName}"
-                   class="form-control mb-4 w-25" placeholder="Middle Name">
 
-            <label>First Last Name</label>
-            <input type="text" th:field="*{firstLastName}"
-                   class="form-control mb-4 w-25" placeholder="First Last Name">
 
             <label>Second Last Name</label>
             <input type="text" th:field="*{secondLastName}"

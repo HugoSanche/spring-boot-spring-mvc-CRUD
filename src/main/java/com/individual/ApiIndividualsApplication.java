@@ -56,7 +56,6 @@ public class ApiIndividualsApplication {
 
 		individualDAO.deletedIndividualById(theId);
 		System.out.println("!Done");
-
 	}
 
 	private void findIndividual(IndividualDAO individualDAO) {
