@@ -25,15 +25,11 @@
             <input type="hidden" th:field="*{personId}">
 
             <label>First Name</label>
-            <input type="text" th:field="*{firstName}"
-                        class="form-control mb-4 w-25" placeholder="First Name">
-            <!-- Add error message (if present)-->
-            <span th:if="${#fields.hasErrors('firstName')}"
-                  th:errors="*{firstName}"
-                  class="error">
+            <input type="text" th:field="*{firstName}" class="form-control mb-4 w-25" placeholder="First Name"/>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">
             </span>
-
-
+            <br>
+            <br>
             <label>Middle Name</label>
             <input type="text" th:field="*{middleName}"
                    class="form-control mb-4 w-25" placeholder="Middle Name">
@@ -192,7 +188,10 @@
 
 
             <button type="submit" class="btn btn-info col-2">Update</button>
-
+<!--            <a th:href="@{/individuals/showFormForUpdate(individualId=${tempIndividual.personId})}"-->
+<!--               class="btn btn-info col-2">-->
+<!--                Update-->
+<!--            </a>-->
 
         </form>
 

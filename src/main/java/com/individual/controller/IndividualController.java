@@ -2,13 +2,14 @@ package com.individual.controller;
 
 import com.individual.entity.Currenci;
 import com.individual.entity.Individual;
-import com.individual.service.IndividualService;
 import com.individual.service.CurrenciService;
+import com.individual.service.IndividualService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -55,9 +56,10 @@ public class IndividualController {
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("individualId")int theId, Model theModel){
 
+
         //get the employee from the service
         Individual theIndividual=individualService.findById(theId);
-
+        System.out.println(theIndividual.getFirstLastName());
        List<Currenci> currencies=currenciService.findAll();
        theModel.addAttribute("currencies",currencies);
 
@@ -81,40 +83,19 @@ public class IndividualController {
     }
     @PostMapping("/update")
     public String updateIndividual(@Valid @ModelAttribute("individual") Individual theIndividual,
-                                   BindingResult theBindingResult, Model model){
+                                   BindingResult theBindingResult,  RedirectAttributes redirectAttributes){
 
-    //    @{/individuals/showFormForUpdate(theIndividual.personId})
         //Validate if exists errors in thymeleaf
-
-
-
         if (theBindingResult.hasErrors()){
-            model.addAttribute(theIndividual);
-            /*return "individuals/showFormForUpdate?individualId=" + theIndividual.personId;*/
-
-            return "Update-individual";
+            //redirectAttributes.addAttribute("individualId", theIndividual.getPersonId());
+            //return "redirect:showFormForUpdate";
+            return "individuals/Update-individual";
         }else{
             //save the individual
             individualService.update(theIndividual);
             // use a redirect to prevent duplicate submissions
             return "redirect:/individuals/list";
         }
-
-
-    }
-    @PostMapping ("/processFormVersionThree")
-    public String processFormVersionThree(@RequestParam ("studentName") String theName, Model model){
-
-        //convert the data to all caps
-        theName=theName.toUpperCase();
-
-        //create the message
-        String result="Bienvenido "+theName;
-
-        //add message to the model
-        model.addAttribute("message",result);
-
-        return "helloword";
     }
 
     @GetMapping("/delete")
