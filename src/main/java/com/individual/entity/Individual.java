@@ -37,16 +37,16 @@ public class Individual implements Serializable {
     private String secondLastName;
 
 
-    @NotNull
+    @NotNull(message = "is required")
     @NotEmpty
-    @Email
+    @Email(message = "Format error")
     @Column(name="Email")
     private String email;
 
     @NotNull
     @NotEmpty
     @Pattern(regexp="(^$|[0-9]{10})")
-    @Size(min=10,max=10)
+    @Size(min=10,max=10,message = "Must be equal to 10")
     @Column(name="PhoneNumber")
     private String phoneNumber;
     @Column(name="MaritalStatus")

@@ -26,6 +26,14 @@ public class IndividualController {
         this.individualService = individualService;
         this.currenciService = currenciService;
     }
+    // add an initbinder ... to convert trim input string
+    //remove leading and training white spaces
+    //resolve issue for our validation
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+        StringTrimmerEditor stringTrimmesrEditor=new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmesrEditor);
+    }
 
 
     //add mapping for list  individuals
@@ -90,8 +98,6 @@ public class IndividualController {
 
         //Validate if exists errors in thymeleaf
         if (theBindingResult.hasErrors()){
-            //redirectAttributes.addAttribute("individualId", theIndividual.getPersonId());
-            //return "redirect:showFormForUpdate";
             return "individuals/Update-individual";
         }else{
             //save the individual

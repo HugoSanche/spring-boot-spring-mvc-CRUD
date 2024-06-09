@@ -20,77 +20,48 @@
         <form action="#" th:action="@{/individuals/update}"
                         th:object="${individual}" method="POST" class="row g-3">
 
+            <!-- Add hidden form filed to handle the update-->
+            <input type="hidden" th:field="*{personId}">
+
             <div class="col-md-4">
-                <label >First name</label>
+                <label class="form-label">First name</label>
                 <input type="text" th:field="*{firstName}"  class="form-control"  placeholder="First name"  >
-                <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">
-                </span>
+                <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
             </div>
 
             <div class="col-md-4">
                 <label  class="form-label">Middle Name</label>
                 <input type="text" th:field="*{middleName}" class="form-control" placeholder="Middle Name" >
-                <span  th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" class="error">
-                            </span>
+
             </div>
             <div class="col-md-4">
                 <label  class="form-label">Last name</label>
-                <input type="text" th:field="*{secondLastName}" class="form-control" placeholder="Second LastName">
-                <span  th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{secondLastName}" class="error">
-                            </span>
+                <input type="text" th:field="*{firstLastName}" class="form-control" placeholder="First LastName">
+                <span  th:if="${#fields.hasErrors('firstLastName')}" th:errors="*{firstLastName}" class="error"></span>
+            </div>
+            <br>
+            <div class="col-md-4">
+                <label class="form-label">Second Last Name</label>
+                <input type="text" th:field="*{secondLastName}" class="form-control" placeholder="Second Last Name">
+                <span  th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{secondLastName}" class="error"></span>
             </div>
 
+            <div class="col-md-4">
+                <label class="form-label">Email</label>
+                <input type="text" th:field="*{email}" class="form-control " placeholder="Email">
+                <span  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+            </div>
 
-<!--                <div class="form-row">-->
-<!--                    <div class="col-md-4 mb-3">-->
-<!--&lt;!&ndash;                        <label >First name</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <input type="text" th:field="*{firstName}" class="form-control"  placeholder="First name" >&ndash;&gt;-->
+            <div class="col-md-4">
+                <label class="form-label">Phone Number</label>
+                <input type="text" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number, 10 digits">
+                <span  th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="error"></span>
+            </div>
 
-<!--&lt;!&ndash;                             <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">&ndash;&gt;-->
-<!--&lt;!&ndash;                            </span>&ndash;&gt;-->
-
-<!--                    </div>-->
-<!--                    <div class="col-md-4 mb-3">-->
-<!--                        <label >Middle Name</label>-->
-<!--                        <input type="text" th:field="*{middleName}" class="form-control"  placeholder="Last name" >-->
-<!--                             <span  th:if="${#fields.hasErrors('middleName')}" th:errors="*{firstName}" class="error">-->
-<!--                            </span>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-4 mb-3">-->
-<!--                        <label >First Last Name</label>-->
-<!--                        <input type="text" th:field="*{secondLastName}" class="form-control"  placeholder="Last name" >-->
-<!--                        <div class="valid-feedback">-->
-<!--                             <span  th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{firstName}" class="error">-->
-<!--                            </span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                </div>-->
-
-
-            <!-- Add hidden form filed to handle the update-->
-            <input type="hidden" th:field="*{personId}">
-
+            <div class="col-md-4">
+            <label class="form-label">Marital Status</label>
             <br>
-
-
-            <label>Second Last Name</label>
-            <input type="text" th:field="*{secondLastName}"
-                   class="form-control mb-4 w-25" placeholder="Second Last Name">
-
-
-            <label>Email</label>
-            <input type="text" th:field="*{email}"
-                   class="form-control mb-4 w-25" placeholder="Email">
-
-            <label>Phone Number</label>
-            <input type="text" th:field="*{phoneNumber}"
-                   class="form-control mb-4 w-25" placeholder="Phone Number, 10 digits">
-
-
-            <label>Marital Status</label>
-            <br>
-            <select th:field="*{maritalStatus}">
+            <select class="form-select" th:field="*{maritalStatus}">
                 <option selected="selected" value="*{maritalStatus}"></option>
                 <option value="Single">Single</option>
                 <option value="LivingTogether">LivingTogether</option>
@@ -99,14 +70,17 @@
                 <option value="Widowed">Widowed</option>
                 <option value="Unknown">Unknown</option>
             </select>
-            <br>
-            <br>
-            <input type="date" th:field="*{birthDate}"
-                   class="form-control mb-4 w-25" placeholder="Birth Date">
+            </div>
 
-            <label>Nationality</label>
-            <input type="text" th:field="*{nationality}"
-                   class="form-control mb-4 w-25" placeholder="Nationality">
+            <div class="col-md-4">
+                <label class="form-label">Birth Date </label>
+                <input type="date" th:field="*{birthDate}" class="form-control" placeholder="Birth Date">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Nationality</label>
+                <input type="text" th:field="*{nationality}" class="form-control" placeholder="Nationality">
+            </div>
 
             <label>Number Of Dependents</label>
             <input type="text" th:field="*{numberOfDependents}"
@@ -145,8 +119,6 @@
             <input type="text" th:field="*{occupation}"
                    class="form-control mb-4 w-25" placeholder="Occupation">
 
-
-
             <label>Start Date In Current Job</label>
             <input type="date" th:field="*{startDateInCurrentJob}"
                    class="form-control mb-4 w-25" placeholder="start Date In Current Job">
@@ -158,9 +130,6 @@
             <label>current Monthly Income</label>
             <input type="number" th:field="*{currentMonthlyIncome}"
                    class="form-control mb-4 w-25" placeholder="current Monthly Income">
-
-
-
 
             <label>Currency</label>
             <br>
