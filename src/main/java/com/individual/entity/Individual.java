@@ -19,14 +19,20 @@ public class Individual implements Serializable {
    public int personId;
 
     @NotNull(message = "is required")
-    @Size (min =1, message = "is required")
+    @Size (min =3, message = "is required")
     @Column(name="FirstName")
     private String firstName;
 
     @Column(name = "MiddleName")
     private String middleName;
+
+    @NotNull(message = "is required")
+    @Size (min =3, message = "is required")
     @Column(name="FirstLastName")
     private String firstLastName;
+
+    @NotNull(message = "is required")
+    @Size (min =3, message = "is required")
     @Column(name="SecondLastName")
     private String secondLastName;
 

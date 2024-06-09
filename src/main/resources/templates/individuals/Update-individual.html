@@ -28,14 +28,14 @@
             </div>
 
             <div class="col-md-4">
-                <label for="validationDefault02" class="form-label">Middle Name</label>
-                <input type="text" th:field="*{middleName}" class="form-control" id="validationDefault02" value="Otto" required>
+                <label  class="form-label">Middle Name</label>
+                <input type="text" th:field="*{middleName}" class="form-control" placeholder="Middle Name" >
                 <span  th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" class="error">
                             </span>
             </div>
             <div class="col-md-4">
-                <label for="validationDefault03" class="form-label">Last name</label>
-                <input type="text" th:field="*{secondLastName}" class="form-control" id="validationDefault03" value="Otto" required>
+                <label  class="form-label">Last name</label>
+                <input type="text" th:field="*{secondLastName}" class="form-control" placeholder="Second LastName">
                 <span  th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{secondLastName}" class="error">
                             </span>
             </div>

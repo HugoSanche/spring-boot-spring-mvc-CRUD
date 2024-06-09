@@ -5,9 +5,11 @@ import com.individual.entity.Individual;
 import com.individual.service.CurrenciService;
 import com.individual.service.IndividualService;
 import jakarta.validation.Valid;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,8 +26,9 @@ public class IndividualController {
         this.individualService = individualService;
         this.currenciService = currenciService;
     }
-    //add mapping for list  individuals
 
+
+    //add mapping for list  individuals
     @GetMapping("/list")
     public String listIndividuals(Model theModel){
 
